@@ -52,7 +52,7 @@ This is the core loop. Everything else is supporting infrastructure.
 
 ## Tech stack (LOCKED — do not suggest alternatives)
 
-- **Framework:** Next.js 15 (App Router), TypeScript strict mode
+- **Framework:** Next.js 16 (App Router), TypeScript strict mode
 - **Styling:** Tailwind CSS 4 + shadcn/ui (new-york style)
 - **Database:** Postgres on Neon
 - **ORM:** Drizzle ORM (not Prisma)
@@ -456,6 +456,89 @@ mnemo/
 └── README.md
 ```
 
+## Design tokens
+
+Locked Foundation v0.1 from Claude Design System work. All UI must use these tokens via Tailwind 4 `@theme {}` block in `app/globals.css`. Hex values are the source of truth — Tailwind class names derive from them.
+
+### Color tokens
+
+**Surface & text**
+- `--color-bg`: `#FAFAF7` (warm white, primary background)
+- `--color-bg-elevated`: `#FFFFFF` (cards on warm background)
+- `--color-bg-subtle`: `#F5F4EF` (section backgrounds)
+- `--color-text`: `#1A2547` (deep navy, primary text)
+- `--color-text-secondary`: `#4A5570`
+- `--color-text-muted`: `#8590A8`
+- `--color-text-inverse`: `#FAFAF7`
+- `--color-border`: `#E8E5E0`
+- `--color-border-strong`: `#D4D0C8`
+
+**Accent — warm gold (single accent, never multiple)**
+- `--color-accent`: `#B8845F`
+- `--color-accent-hover`: `#A8744F`
+- `--color-accent-subtle`: `#F4ECDF`
+
+**Semantic (muted by design — never neon, never alarm)**
+- `--color-success`: `#6B8E6B` sage / `--color-success-bg`: `#EEF2EE`
+- `--color-warning`: `#C4934C` amber / `--color-warning-bg`: `#FAF3E8`
+- `--color-error`: `#A85544` brick / `--color-error-bg`: `#F5EBE8`
+- `--color-info`: `#5A7591` slate / `--color-info-bg`: `#ECF0F4`
+
+**Quality engine (card grading)**
+- `--color-quality-a`: `#4A6B4A` on `#EEF2EE` (Excellent)
+- `--color-quality-b`: `#5A6878` on `#EEF0F2` (Good)
+- `--color-quality-c`: `#8E6B3A` on `#F8F1E5` (Interference)
+- `--color-quality-needswork`: `#8B4A3A` on `#F2E8E5` (Needs work)
+
+### Typography
+
+Font loading: Use `next/font/google` in `app/layout.tsx`. Each font assigns a CSS variable via the `variable` option. Subsets must include `latin` and `vietnamese` for Vietnamese diacritic rendering.
+
+- **Display** — Fraunces variable, with `opsz` and `WONK` axes exposed → exposed as `--font-display`
+- **UI** — Inter variable → exposed as `--font-ui`
+- **Mono** — JetBrains Mono variable (stats numbers, IELTS scores, code-like data) → exposed as `--font-mono`
+
+In `app/globals.css` `@theme {}` block:
+```css
+--font-display: var(--font-fraunces, Georgia), serif;
+--font-ui: var(--font-inter, system-ui), sans-serif;
+--font-mono: var(--font-jetbrains-mono, ui-monospace), monospace;
+```
+
+Where `--font-fraunces` / `--font-inter` / `--font-jetbrains-mono` are set by `next/font/google` declarations in `layout.tsx`.
+
+### Type scale
+
+| Role | Family | Size/leading | Weight | Tracking |
+|---|---|---|---|---|
+| Display L | Fraunces | 48/56 | 500 | -0.02em |
+| Display M | Fraunces | 36/44 | 500 | -0.02em |
+| Display S | Fraunces | 28/36 | 500 | -0.01em |
+| H1 | Inter | 24/32 | 600 | -0.01em |
+| H2 | Inter | 20/28 | 600 | -0.01em |
+| H3 | Inter | 18/26 | 600 | 0 |
+| Body L | Inter | 18/28 | 400 | 0 |
+| Body M (default) | Inter | 16/24 | 400 | 0 |
+| Body S | Inter | 14/20 | 400 | 0 |
+| Label | Inter | 12/16 | 500 | 0.06em uppercase |
+| Card front | Fraunces | 24/36 | 500 | 0, centered |
+| Stats number | Fraunces tabular | 36/44 | 500 | 0 |
+| Mono (scores) | JetBrains Mono | 14/20 | 500 | 0 |
+
+### Spacing, radius, shadow
+
+- Spacing scale: Tailwind default (`4px` base = `space-1`)
+- Radius: button `4px`, card `8px`, flashcard `12px`, pill `9999px`
+- Shadow: avoid except flashcards (`shadow-sm`). Buttons + cards are flat with `1px` border.
+
+### Hard rules
+
+- One primary accent only (warm gold). Never introduce secondary accent without spec amendment.
+- Never alarming colors. Semantic colors muted by design.
+- No drop shadows on buttons. Surfaces are flat with borders.
+- No celebrations of low-quality cards. "Needs work" badge appears when quality engine detects interference.
+- Vietnamese diacritics must render correctly in Fraunces — verify before shipping any display copy.
+
 ## Code conventions
 
 - snake_case for DB columns, camelCase for TS variables, PascalCase for components
@@ -538,6 +621,8 @@ Before opening beta signups to first 100 users:
 
 ## Decisions log (most recent first)
 
+- **2026-05-19**: Next.js bumped from 15 to 16. create-next-app@latest installed Next 16.2.6 as default — Next.js team considers it stable for new projects. No breaking changes affecting our MVP. React Compiler is more stable in 16. React 19.2.4 unchanged.
+- **2026-05-19**: Design tokens v0.1 locked (warm white / deep navy / warm gold + semantic + quality grades). All UI via Tailwind 4 `@theme` block. Fonts via `next/font/google` (Fraunces with WONK axis for Vietnamese italic accents).
 - **2026-05-19**: Beta phase strategy — skip payment, use Gemini free tier, free for first 100 users, grandfather discount post-V2.
 - **2026-05-19**: AI providers — Vercel AI SDK with Gemini as default (free), Claude Haiku as premium fallback (paid).
 - **2026-05-19**: Tech stack locked. Mobile-first PWA. Quality engine closed source. Brand = Mnemo.

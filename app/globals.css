@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+	/* Surface & text */
+	--color-bg: #fafaf7;
+	--color-bg-elevated: #ffffff;
+	--color-bg-subtle: #f5f4ef;
+	--color-text: #1a2547;
+	--color-text-secondary: #4a5570;
+	--color-text-muted: #8590a8;
+	--color-text-inverse: #fafaf7;
+	--color-border: #e8e5e0;
+	--color-border-strong: #d4d0c8;
+
+	/* Accent — warm gold (single accent) */
+	--color-accent: #b8845f;
+	--color-accent-hover: #a8744f;
+	--color-accent-subtle: #f4ecdf;
+
+	/* Semantic (muted by design) */
+	--color-success: #6b8e6b;
+	--color-success-bg: #eef2ee;
+	--color-warning: #c4934c;
+	--color-warning-bg: #faf3e8;
+	--color-error: #a85544;
+	--color-error-bg: #f5ebe8;
+	--color-info: #5a7591;
+	--color-info-bg: #ecf0f4;
+
+	/* Quality engine (card grading) */
+	--color-quality-a: #4a6b4a;
+	--color-quality-a-bg: #eef2ee;
+	--color-quality-b: #5a6878;
+	--color-quality-b-bg: #eef0f2;
+	--color-quality-c: #8e6b3a;
+	--color-quality-c-bg: #f8f1e5;
+	--color-quality-needswork: #8b4a3a;
+	--color-quality-needswork-bg: #f2e8e5;
+
+	/* Typography (assigned from next/font/google in layout.tsx) */
+	--font-display: var(--font-fraunces), Georgia, serif;
+	--font-ui: var(--font-inter), system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+	/* Radius */
+	--radius-button: 4px;
+	--radius-card: 8px;
+	--radius-flashcard: 12px;
+	--radius-pill: 9999px;
+}
+
+body {
+	font-family: var(--font-ui);
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.font-display {
+	font-family: var(--font-display);
+}
+
+.font-mono {
+	font-family: var(--font-mono);
+}
