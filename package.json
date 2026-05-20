@@ -11,7 +11,11 @@
 		"typecheck": "tsc --noEmit",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"test:e2e": "playwright test"
+		"test:e2e": "playwright test",
+		"db:generate": "node --env-file=.env.local ./node_modules/drizzle-kit/bin.cjs generate",
+		"db:push": "node --env-file=.env.local ./node_modules/drizzle-kit/bin.cjs push",
+		"db:migrate": "node --env-file=.env.local ./node_modules/drizzle-kit/bin.cjs migrate",
+		"db:studio": "node --env-file=.env.local ./node_modules/drizzle-kit/bin.cjs studio"
 	},
 	"dependencies": {
 		"@ai-sdk/anthropic": "^3.0.78",

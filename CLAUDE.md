@@ -621,6 +621,7 @@ Before opening beta signups to first 100 users:
 
 ## Decisions log (most recent first)
 
+- **2026-05-20**: Drizzle schema uses snake_case columns + camelCase TS fields (casing: "snake_case" in drizzle.config.ts). 12 MVP tables defined. JSONB for weakness_clusters/quality_warnings/device_info with $type<> annotations. Circular FK between decks ↔ mock_tests dropped (app-level enforcement). Better Auth column mapping deferred to Session 3.
 - **2026-05-19**: Next.js bumped from 15 to 16. create-next-app@latest installed Next 16.2.6 as default — Next.js team considers it stable for new projects. No breaking changes affecting our MVP. React Compiler is more stable in 16. React 19.2.4 unchanged.
 - **2026-05-19**: Design tokens v0.1 locked (warm white / deep navy / warm gold + semantic + quality grades). All UI via Tailwind 4 `@theme` block. Fonts via `next/font/google` (Fraunces with WONK axis for Vietnamese italic accents).
 - **2026-05-19**: Beta phase strategy — skip payment, use Gemini free tier, free for first 100 users, grandfather discount post-V2.
