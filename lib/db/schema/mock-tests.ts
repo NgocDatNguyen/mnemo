@@ -9,7 +9,7 @@ import {
 	uuid,
 } from "drizzle-orm/pg-core";
 import { uuidv7 } from "uuidv7";
-import type { WeaknessCluster } from "../types";
+import type { MockTestQualityWarning, WeaknessCluster } from "../types";
 import { mockInputSourceEnum, mockTestTypeEnum } from "./enums";
 import { users } from "./users";
 
@@ -33,6 +33,7 @@ export const mockTests = pgTable(
 		extractedText: text(),
 		analyzedAt: timestamp({ withTimezone: true, mode: "date" }),
 		weaknessClusters: jsonb().$type<WeaknessCluster[]>(),
+		qualityWarnings: jsonb().$type<MockTestQualityWarning[]>(),
 		generatedDeckId: uuid(),
 		totalQuestions: integer(),
 		correctCount: integer(),

@@ -12,6 +12,7 @@ const base: MockTest = {
 	extractedText: null,
 	analyzedAt: null,
 	weaknessClusters: null,
+	qualityWarnings: null,
 	generatedDeckId: null,
 	totalQuestions: null,
 	correctCount: null,

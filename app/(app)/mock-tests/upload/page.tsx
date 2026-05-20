@@ -6,6 +6,11 @@ import { auth } from "@/lib/auth/server";
 import { copy } from "@/lib/i18n/copy";
 
 export const dynamic = "force-dynamic";
+// The upload page hosts `recordUpload`, which schedules `analyzeMockTest` via
+// `after()`. Gemini Vision typically returns in 5–15s, but cold starts + Writing
+// essays can push closer to 30s. Extend the function window so the background
+// analysis has room to finish before Vercel kills it. Hobby plan caps at 60s.
+export const maxDuration = 60;
 
 export default async function UploadMockTestPage() {
 	const session = await auth.api.getSession({ headers: await headers() });

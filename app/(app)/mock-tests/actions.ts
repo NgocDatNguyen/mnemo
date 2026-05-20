@@ -1,7 +1,9 @@
 "use server";
 
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { uuidv7 } from "uuidv7";
+import { analyzeMockTest } from "@/lib/ai/analyze-mock-test";
 import { trackServerEvent } from "@/lib/analytics/posthog-server";
 import { auth } from "@/lib/auth/server";
 import { db } from "@/lib/db/client";
@@ -74,6 +76,17 @@ export async function recordUpload(input: RecordUploadInput): Promise<RecordUplo
 				input_source: inputSourceFromContentType(parsed.data.contentType),
 				content_type: parsed.data.contentType,
 			},
+		});
+
+		// Run analysis after the response is flushed. The analyzer writes its own
+		// failure marker to mock_tests.quality_warnings on error, so we don't need
+		// to rethrow here — the detail page picks up the state from DB on next poll.
+		after(async () => {
+			try {
+				await analyzeMockTest(parsed.data.testId);
+			} catch {
+				// analyzeMockTest already recorded the failure to the DB.
+			}
 		});
 
 		return { ok: true, testId: parsed.data.testId };

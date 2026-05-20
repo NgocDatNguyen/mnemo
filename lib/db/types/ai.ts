@@ -6,27 +6,55 @@
  * boundary (server actions / API routes) with Zod before persisting.
  */
 
+/**
+ * One weakness pattern surfaced by Gemini Vision when analyzing a mock test.
+ *
+ * `type` partitions clusters in the UI. Reading-only types: `reading_skill`.
+ * Writing-only: `writing_skill`, `task_response`. Shared: vocabulary, grammar,
+ * collocation. Severity maps to the user-facing badge color.
+ */
 export type WeaknessCluster = {
-	/** Free-form taxonomy from the AI — e.g. "collocations", "subject-verb agreement". */
-	category: string;
-	/** Drives prioritization in card generation and UI sort order. */
-	severity: "low" | "medium" | "high";
-	/** Question identifiers from the mock test that exhibited this weakness. */
-	affected_questions: string[];
-	/** Concrete wrong/correct pairs the AI extracted for card seeding. */
+	type:
+		| "vocabulary"
+		| "grammar"
+		| "collocation"
+		| "reading_skill"
+		| "writing_skill"
+		| "task_response";
+	/** Short human label, e.g. "Inversion structures", "Article usage". */
+	theme: string;
+	severity: "minor" | "moderate" | "major";
 	examples: {
-		wrong: string;
-		correct: string;
-		sentence: string;
+		user_error: string;
+		correction: string;
+		explanation_vi: string;
 	}[];
+	suggested_practice_vi: string;
+};
+
+/**
+ * Warning attached to a mock test row by the analyzer.
+ *
+ * Detection-time types are written by Gemini when it sees a degraded input
+ * (e.g. blurry photo). `analysis_failed` is reserved for our own error handler
+ * and is the signal the UI uses to render the retry button.
+ */
+export type MockTestQualityWarning = {
+	type:
+		| "low_image_quality"
+		| "partial_answers"
+		| "ambiguous_handwriting"
+		| "language_mismatch"
+		| "analysis_failed";
+	message_vi: string;
 };
 
 /**
  * One warning attached to a card by the Quality Engine.
  *
- * `rule` and `severity` match CLAUDE.md "Quality Engine — 5 rules":
- *  - atomicity (high), reading_load (medium), disambiguation (medium),
- *    cloze_placement (high), interference (low or medium)
+ * Distinct from `MockTestQualityWarning` — different table, different rules
+ * (CLAUDE.md "Quality Engine — 5 rules"). Used by the cards.quality_warnings
+ * column.
  */
 export type QualityWarning = {
 	rule: "atomicity" | "reading_load" | "disambiguation" | "cloze_placement" | "interference";

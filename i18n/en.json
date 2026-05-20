@@ -107,7 +107,59 @@
 		"detail": {
 			"backToList": "Back to list",
 			"placeholder": "Analysis will be ready in a few minutes.",
-			"uploadedLabel": "Uploaded"
+			"uploadedLabel": "Uploaded",
+			"analysis": {
+				"inFlight": {
+					"title": "Analyzing your test…",
+					"body": "Mnemo is reading the test and identifying weaknesses. This usually takes 10–30 seconds."
+				},
+				"failed": {
+					"title": "Analysis failed",
+					"body": "Mnemo could not analyze this test. Please try again.",
+					"retry": "Try analysis again",
+					"retrying": "Retrying…"
+				},
+				"timeout": {
+					"title": "Took too long",
+					"body": "Analysis did not complete within 90 seconds. Please try again."
+				},
+				"header": {
+					"extractedText": "Extracted text",
+					"totalQuestions": "Total questions",
+					"correctCount": "Correct",
+					"bandEstimate": "Estimated band",
+					"bandUnknown": "Not enough data"
+				},
+				"cluster": {
+					"typeLabels": {
+						"vocabulary": "Vocabulary",
+						"grammar": "Grammar",
+						"collocation": "Collocation",
+						"reading_skill": "Reading skill",
+						"writing_skill": "Writing skill",
+						"task_response": "Task response"
+					},
+					"severityLabels": {
+						"minor": "Minor",
+						"moderate": "Moderate",
+						"major": "Major"
+					},
+					"examplesHeading": "Examples",
+					"practiceHeading": "Suggested practice",
+					"errorLabel": "You wrote",
+					"correctionLabel": "Correction"
+				},
+				"qualityWarnings": {
+					"heading": "Notes on analysis quality",
+					"types": {
+						"low_image_quality": "Low image quality",
+						"partial_answers": "Partial answers",
+						"ambiguous_handwriting": "Ambiguous handwriting",
+						"language_mismatch": "Non-English content"
+					}
+				},
+				"createCardsCta": "Create flashcards from this analysis (coming soon)"
+			}
 		}
 	}
 }

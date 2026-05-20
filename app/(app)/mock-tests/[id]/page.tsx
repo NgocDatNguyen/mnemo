@@ -2,6 +2,8 @@ import { and, eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { AnalysisStatus } from "@/components/mock-tests/analysis-status";
+import { WeaknessDisplay } from "@/components/mock-tests/weakness-display";
 import { auth } from "@/lib/auth/server";
 import { db } from "@/lib/db/client";
 import { mockTests } from "@/lib/db/schema";
@@ -37,6 +39,7 @@ export default async function MockTestDetailPage({ params }: { params: Promise<{
 	const testTypeLabel = t.card[test.testType];
 	const sourceLabel = test.inputSource === "pdf" ? t.card.sourcePdf : t.card.sourcePhoto;
 	const isAnalyzed = test.analyzedAt !== null;
+	const hasFailed = (test.qualityWarnings ?? []).some((w) => w.type === "analysis_failed");
 
 	return (
 		<main className="mx-auto w-full max-w-2xl px-4 py-8 sm:py-12">
@@ -64,10 +67,10 @@ export default async function MockTestDetailPage({ params }: { params: Promise<{
 				</span>
 			</div>
 
-			{!isAnalyzed && (
-				<div className="mt-8 rounded-lg border border-border bg-bg-elevated px-6 py-12 text-center">
-					<p className="text-sm text-text-secondary">{t.detail.placeholder}</p>
-				</div>
+			{isAnalyzed ? (
+				<WeaknessDisplay test={test} />
+			) : (
+				<AnalysisStatus testId={test.id} key={hasFailed ? "failed" : "polling"} />
 			)}
 		</main>
 	);

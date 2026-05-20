@@ -107,7 +107,59 @@
 		"detail": {
 			"backToList": "Quay lại danh sách",
 			"placeholder": "Phân tích sẽ sẵn sàng trong vài phút.",
-			"uploadedLabel": "Đã tải lên"
+			"uploadedLabel": "Đã tải lên",
+			"analysis": {
+				"inFlight": {
+					"title": "Đang phân tích bài thi…",
+					"body": "Mnemo đang đọc bài và phân tích điểm yếu. Quá trình này thường mất 10–30 giây."
+				},
+				"failed": {
+					"title": "Lỗi phân tích",
+					"body": "Mnemo không phân tích được bài thi này. Vui lòng thử lại.",
+					"retry": "Thử phân tích lại",
+					"retrying": "Đang thử lại…"
+				},
+				"timeout": {
+					"title": "Quá thời gian chờ",
+					"body": "Phân tích chưa hoàn tất sau 90 giây. Vui lòng thử lại."
+				},
+				"header": {
+					"extractedText": "Nội dung trích xuất",
+					"totalQuestions": "Tổng câu",
+					"correctCount": "Câu đúng",
+					"bandEstimate": "Ước tính band",
+					"bandUnknown": "Chưa đủ dữ liệu"
+				},
+				"cluster": {
+					"typeLabels": {
+						"vocabulary": "Từ vựng",
+						"grammar": "Ngữ pháp",
+						"collocation": "Cụm từ đi kèm",
+						"reading_skill": "Kỹ năng Reading",
+						"writing_skill": "Kỹ năng Writing",
+						"task_response": "Task response"
+					},
+					"severityLabels": {
+						"minor": "Nhẹ",
+						"moderate": "Vừa",
+						"major": "Nghiêm trọng"
+					},
+					"examplesHeading": "Ví dụ",
+					"practiceHeading": "Đề xuất luyện tập",
+					"errorLabel": "Bạn viết",
+					"correctionLabel": "Sửa thành"
+				},
+				"qualityWarnings": {
+					"heading": "Lưu ý về chất lượng phân tích",
+					"types": {
+						"low_image_quality": "Ảnh chất lượng thấp",
+						"partial_answers": "Bài chưa đầy đủ đáp án",
+						"ambiguous_handwriting": "Chữ viết tay khó đọc",
+						"language_mismatch": "Ngôn ngữ không phải tiếng Anh"
+					}
+				},
+				"createCardsCta": "Tạo flashcard từ phân tích này (sắp ra mắt)"
+			}
 		}
 	}
 }

@@ -15,6 +15,13 @@
       "when": 1779250435579,
       "tag": "0001_outstanding_moonstone",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779272557805,
+      "tag": "0002_friendly_mandroid",
+      "breakpoints": true
     }
   ]
 }
