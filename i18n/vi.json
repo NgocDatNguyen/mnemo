@@ -1,0 +1,69 @@
+{
+	"hero": {
+		"badge": "Beta 0.1 · Miễn phí cho 100 người đầu",
+		"headlinePrefix": "Mnemo — học một lần,",
+		"headlineItalic": "nhớ trọn đời",
+		"subhead1": "Mnemo phân tích bài làm sai, tạo flashcard riêng cho điểm yếu của bạn, và lên lịch ôn để bạn nhớ lâu.",
+		"subhead2": "Dành cho người học IELTS muốn từ band 6.5 lên 7.0–7.5.",
+		"ctaPrimary": "Tham gia beta",
+		"ctaSecondary": "Vào waitlist",
+		"ctaClarifier": "Không cần mật khẩu. Đăng nhập qua link email."
+	},
+	"methodology": {
+		"heading": "Cách Mnemo hoạt động",
+		"subhead": "Ba bước từ bài thi thử đến nhớ lâu.",
+		"columns": [
+			{
+				"icon": "scan-search",
+				"heading": "Phân tích bài thi thử",
+				"body": "Tải ảnh bài làm sai của bạn. Mnemo nhận diện chữ viết tay, phân tích từ vựng, ngữ pháp và collocation bạn còn yếu."
+			},
+			{
+				"icon": "layers",
+				"heading": "Flashcard cá nhân hóa",
+				"body": "Mnemo tạo 10-30 flashcard nhắm đúng điểm yếu. Mỗi card được Quality Engine chấm điểm trước khi vào deck của bạn."
+			},
+			{
+				"icon": "calendar-clock",
+				"heading": "Lịch ôn theo FSRS",
+				"body": "Thuật toán FSRS quyết định khi nào bạn cần ôn lại từng card — không quá sớm, không quá muộn. Nhớ lâu, học ít hơn."
+			}
+		]
+	},
+	"whyWorks": {
+		"heading": "Tại sao Mnemo hoạt động",
+		"para1": "FSRS không phải thuật toán mới. Spaced repetition đã được Anki — phần mềm flashcard mã nguồn mở — chứng minh trong gần 20 năm. Mnemo dùng FSRS-5, phiên bản hiện đại nhất, được tinh chỉnh từ hàng triệu lượt ôn của người học toàn thế giới.",
+		"para2": "Anki bridge: bạn có thể import file .apkg vào Mnemo, và export ngược lại bất cứ lúc nào. Tính năng này miễn phí vĩnh viễn, kể cả sau khi Mnemo có gói trả phí. Nếu bạn không thích Mnemo, bạn không mất gì.",
+		"para3": "Mnemo không có streak, không có level, không có mascot dễ thương nhắc bạn vào học. Đây là công cụ cho người học nghiêm túc — không phải trò chơi học."
+	},
+	"pricingCallout": {
+		"body": "Hiện tại Mnemo đang trong beta: miễn phí cho 100 người đầu tiên. Sau beta sẽ có gói trả phí — người dùng beta được giữ giá ưu đãi vĩnh viễn (grandfather pricing)."
+	},
+	"ctaSection": {
+		"heading": "Mnemo đang mở cho 100 người dùng đầu",
+		"body": "Tham gia bây giờ hoặc vào waitlist nếu beta đã đầy.",
+		"ctaPrimary": "Tham gia beta",
+		"ctaSecondary": "Vào waitlist"
+	},
+	"footer": {
+		"tagline": "Mnemo — turn what you study into what you know",
+		"attribution": "Made in Hà Nội · Beta 0.1",
+		"linkPrivacy": "Privacy",
+		"linkTerms": "Terms"
+	},
+	"dashboard": {
+		"greeting": "Chào",
+		"placeholder": "Mnemo đang được hoàn thiện. Bạn sẽ nhận email khi sẵn sàng.",
+		"signOut": "Đăng xuất"
+	},
+	"privacy": {
+		"title": "Chính sách bảo mật",
+		"body": "Chính sách bảo mật đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",
+		"backHome": "Quay về trang chủ"
+	},
+	"terms": {
+		"title": "Điều khoản sử dụng",
+		"body": "Điều khoản sử dụng đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",
+		"backHome": "Quay về trang chủ"
+	}
+}

@@ -1,0 +1,69 @@
+{
+	"hero": {
+		"badge": "Beta 0.1 · Free for the first 100",
+		"headlinePrefix": "Mnemo — turn what you study,",
+		"headlineItalic": "into what you know",
+		"subhead1": "Mnemo analyzes your mock-test mistakes, builds flashcards targeting your weak spots, and schedules reviews so you actually remember.",
+		"subhead2": "Built for IELTS learners going from band 6.5 to 7.0–7.5.",
+		"ctaPrimary": "Join beta",
+		"ctaSecondary": "Join waitlist",
+		"ctaClarifier": "No password required. Sign in via email link."
+	},
+	"methodology": {
+		"heading": "How Mnemo works",
+		"subhead": "Three steps from mock test to long-term recall.",
+		"columns": [
+			{
+				"icon": "scan-search",
+				"heading": "Analyze your mock test",
+				"body": "Upload a photo of your incorrect answers. Mnemo reads your handwriting and identifies the vocabulary, grammar, and collocations you got wrong."
+			},
+			{
+				"icon": "layers",
+				"heading": "Personalized flashcards",
+				"body": "Mnemo generates 10-30 flashcards targeting your weak spots. Every card is graded by the Quality Engine before joining your deck."
+			},
+			{
+				"icon": "calendar-clock",
+				"heading": "FSRS review schedule",
+				"body": "FSRS decides when you need to review each card — not too soon, not too late. Remember longer, study less."
+			}
+		]
+	},
+	"whyWorks": {
+		"heading": "Why Mnemo works",
+		"para1": "FSRS isn't a new algorithm. Spaced repetition has been validated by Anki — the open-source flashcard app — for nearly 20 years. Mnemo uses FSRS-5, the most current version, tuned on millions of reviews from learners worldwide.",
+		"para2": "Anki bridge: you can import .apkg files into Mnemo and export them back any time. This feature is free forever, even after Mnemo has paid tiers. If you don't like Mnemo, you lose nothing.",
+		"para3": "Mnemo has no streaks, no levels, no cute mascot reminding you to study. This is a tool for serious learners — not a study game."
+	},
+	"pricingCallout": {
+		"body": "Mnemo is currently in beta: free for the first 100 users. Paid tiers come after beta — beta users get grandfather pricing for life."
+	},
+	"ctaSection": {
+		"heading": "Mnemo is open for the first 100",
+		"body": "Join now, or join the waitlist if beta is full.",
+		"ctaPrimary": "Join beta",
+		"ctaSecondary": "Join waitlist"
+	},
+	"footer": {
+		"tagline": "Mnemo — turn what you study into what you know",
+		"attribution": "Made in Hà Nội · Beta 0.1",
+		"linkPrivacy": "Privacy",
+		"linkTerms": "Terms"
+	},
+	"dashboard": {
+		"greeting": "Hi",
+		"placeholder": "Mnemo is still being built. You'll get an email when it's ready.",
+		"signOut": "Sign out"
+	},
+	"privacy": {
+		"title": "Privacy policy",
+		"body": "Our privacy policy is being finalized. Full version will be published before Mnemo's official launch.",
+		"backHome": "Back to home"
+	},
+	"terms": {
+		"title": "Terms of service",
+		"body": "Our terms of service are being finalized. Full version will be published before Mnemo's official launch.",
+		"backHome": "Back to home"
+	}
+}
