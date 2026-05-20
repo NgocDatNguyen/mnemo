@@ -36,6 +36,18 @@ export const auth = betterAuth({
 
 	emailAndPassword: { enabled: false },
 
+	user: {
+		// Register Mnemo-specific user columns so Better Auth's adapter factory
+		// includes them when INSERTing. Without this declaration, transformInput
+		// in @better-auth/core silently drops these fields from the create path
+		// and the DB defaults (beta_tester=false, beta_joined_at=null) win,
+		// regardless of what databaseHooks.user.create.before returns.
+		additionalFields: {
+			betaTester: { type: "boolean", required: false, defaultValue: false },
+			betaJoinedAt: { type: "date", required: false },
+		},
+	},
+
 	advanced: {
 		database: {
 			generateId: () => uuidv7(),
