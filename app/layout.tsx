@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { PostHogPageview } from "./posthog-pageview";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -56,7 +58,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			lang="vi"
 			className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
 		>
-			<body className="min-h-full flex flex-col bg-bg text-text font-ui">{children}</body>
+			<body className="min-h-full flex flex-col bg-bg text-text font-ui">
+				<Providers>
+					<PostHogPageview />
+					{children}
+				</Providers>
+			</body>
 		</html>
 	);
 }

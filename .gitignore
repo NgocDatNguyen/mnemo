@@ -21,6 +21,7 @@ next-env.d.ts
 
 # Testing
 /coverage
+.playwright-mcp/
 
 # Environment files - NEVER COMMIT
 .env

@@ -71,8 +71,8 @@ This is the core loop. Everything else is supporting infrastructure.
 - **Lint/format:** Biome (not ESLint + Prettier)
 - **Testing:** Vitest (unit) + Playwright (e2e)
 - **Package manager:** pnpm
-- **Deployment:** Vercel
-- **Domain:** mnemo.app (primary)
+- **Deployment:** Vercel — `mnemo-drab.vercel.app` (function region `sin1`, GitHub auto-deploy on push to `main`)
+- **Domain:** mnemo.app (primary, not yet purchased — Vercel subdomain in Phase 1)
 
 ## AI providers — multi-provider strategy
 
@@ -621,6 +621,8 @@ Before opening beta signups to first 100 users:
 
 ## Decisions log (most recent first)
 
+- **2026-05-20**: Phase 1 live on Vercel at https://mnemo-drab.vercel.app (project `prj_myzhIIe9e2EB1GZXv1wndUVY40tp` under `team_LvLaYNMc6ZkniwC8B6oCbHGY`). Function region `sin1` to minimize latency to Neon Singapore. GitHub `NgocDatNguyen/mnemo` auto-connected — pushes to `main` trigger production deploys, PRs get preview deploys. Env vars (12 + BETTER_AUTH_URL on prod-only) set via Vercel REST API (CLI `vercel env add` has a regression on Preview target when `--yes` is used non-interactively). Custom domain on `mnemo.app` deferred until DNS purchase. Resend still in dev mode (sender locked to signup email).
+- **2026-05-20**: Sentry + PostHog wiring landed in same Vercel deploy session. Packages were installed in Session 1 scaffold but never integrated until now. Added: `instrumentation.ts` (server+edge), `instrumentation-client.ts` (browser), `app/global-error.tsx`, `app/providers.tsx` with PostHogProvider, `app/posthog-pageview.tsx` for app-router pageview tracking, `withSentryConfig` in `next.config.ts`. Source map upload verified via temp `/api/test-sentry` (issue MNEMO-WEB-1, resolved). PostHog pageview verified via Playwright headless visit. `NEXT_PUBLIC_SENTRY_DSN` added (= public `SENTRY_DSN`). Known deprecation warnings: `@sentry/nextjs` `disableLogger` and `automaticVercelMonitors` should move under `webpack.*` keys — non-blocking, future cleanup. Next.js 16 deprecation: rename `middleware.ts` → `proxy.ts` — non-blocking, future cleanup.
 - **2026-05-20**: Landing page locked (sections: hero with WONK italic on "nhớ trọn đời", 3-column methodology with Lucide icons, 3-paragraph why-works, pricing callout, CTA, footer). Anti-gamification positioning explicit. Anki bridge wording clarified as "free forever even after Mnemo paid tier" to avoid contradicting pricing callout. No live beta counter in MVP. No OG image yet (Phase 2 design task). i18n files populated for vi + en but no UI switcher.
 - **2026-05-20**: Auth strategy locked = magic link email only via Resend. NO passwords (eliminates breach/reset surface). NO Google OAuth in beta (defer to V2 if needed based on signup friction data). Supersedes PHASE_1_PROMPTS.md Session 3 prompt which mentioned email+password+OAuth — that prompt is outdated; decisions log is the source of truth going forward.
 - **2026-05-20**: Added lib/email/ folder for transactional email infrastructure (Resend client + templates). Initial template: magic-link.ts (Session 3). Future templates: weekly digest, beta access notification, feedback acknowledgment.
