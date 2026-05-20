@@ -1,4 +1,5 @@
 import { relations } from "drizzle-orm";
+import { accounts, sessions } from "./auth";
 import { cards } from "./cards";
 import { cohortMembers } from "./cohort-members";
 import { cohorts } from "./cohorts";
@@ -20,6 +21,16 @@ export const usersRelations = relations(users, ({ many, one }) => ({
 	usageCredits: many(usageCredits),
 	subscription: one(subscriptions),
 	feedback: many(feedback),
+	sessions: many(sessions),
+	accounts: many(accounts),
+}));
+
+export const sessionsRelations = relations(sessions, ({ one }) => ({
+	user: one(users, { fields: [sessions.userId], references: [users.id] }),
+}));
+
+export const accountsRelations = relations(accounts, ({ one }) => ({
+	user: one(users, { fields: [accounts.userId], references: [users.id] }),
 }));
 
 export const decksRelations = relations(decks, ({ one, many }) => ({
