@@ -621,6 +621,7 @@ Before opening beta signups to first 100 users:
 
 ## Decisions log (most recent first)
 
+- **2026-05-20**: Landing page locked (sections: hero with WONK italic on "nhớ trọn đời", 3-column methodology with Lucide icons, 3-paragraph why-works, pricing callout, CTA, footer). Anti-gamification positioning explicit. Anki bridge wording clarified as "free forever even after Mnemo paid tier" to avoid contradicting pricing callout. No live beta counter in MVP. No OG image yet (Phase 2 design task). i18n files populated for vi + en but no UI switcher.
 - **2026-05-20**: Auth strategy locked = magic link email only via Resend. NO passwords (eliminates breach/reset surface). NO Google OAuth in beta (defer to V2 if needed based on signup friction data). Supersedes PHASE_1_PROMPTS.md Session 3 prompt which mentioned email+password+OAuth — that prompt is outdated; decisions log is the source of truth going forward.
 - **2026-05-20**: Added lib/email/ folder for transactional email infrastructure (Resend client + templates). Initial template: magic-link.ts (Session 3). Future templates: weekly digest, beta access notification, feedback acknowledgment.
 - **2026-05-20**: Phase 1 email sending uses Resend dev mode (from onboarding@resend.dev → email used to sign up Resend only). Production from-domain at mnemo.app deferred to Phase 2 after domain purchased + Resend domain verification configured.
