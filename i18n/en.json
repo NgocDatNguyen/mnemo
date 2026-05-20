@@ -65,5 +65,49 @@
 		"title": "Terms of service",
 		"body": "Our terms of service are being finalized. Full version will be published before Mnemo's official launch.",
 		"backHome": "Back to home"
+	},
+	"mockTests": {
+		"pageTitle": "Mock tests",
+		"pageSubhead": "Upload a completed test. Mnemo will analyze weaknesses and create flashcards.",
+		"uploadCta": "Upload mock test",
+		"empty": {
+			"title": "No mock tests yet",
+			"body": "Upload your first one to start analysis and card generation.",
+			"cta": "Upload your first test"
+		},
+		"card": {
+			"reading": "Reading",
+			"writing": "Writing",
+			"statusPending": "Pending analysis",
+			"statusAnalyzed": "Analyzed",
+			"sourcePhoto": "Photo",
+			"sourcePdf": "PDF"
+		},
+		"upload": {
+			"pageTitle": "Upload mock test",
+			"pageSubhead": "Pick a test type and upload a photo or PDF. Max 10 MB.",
+			"testTypeLabel": "Test type",
+			"testType": {
+				"reading": "Reading",
+				"writing": "Writing"
+			},
+			"fileLabel": "File",
+			"filePickerCta": "Pick an image or PDF from your device",
+			"removeFile": "Remove",
+			"fileHint": "Supported: JPG, PNG, HEIC, PDF. Max 10 MB.",
+			"submit": "Upload",
+			"submitBusy": "Uploading…",
+			"errors": {
+				"tooLarge": "File is too large. Max 10 MB.",
+				"unsupported": "Unsupported format. Use JPG, PNG, HEIC, or PDF.",
+				"generic": "Upload failed, please try again."
+			},
+			"back": "Back to list"
+		},
+		"detail": {
+			"backToList": "Back to list",
+			"placeholder": "Analysis will be ready in a few minutes.",
+			"uploadedLabel": "Uploaded"
+		}
 	}
 }

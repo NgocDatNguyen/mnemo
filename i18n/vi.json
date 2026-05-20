@@ -65,5 +65,49 @@
 		"title": "Điều khoản sử dụng",
 		"body": "Điều khoản sử dụng đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",
 		"backHome": "Quay về trang chủ"
+	},
+	"mockTests": {
+		"pageTitle": "Bài thi thử",
+		"pageSubhead": "Tải bài thi đã làm. Mnemo sẽ phân tích điểm yếu và tạo flashcard.",
+		"uploadCta": "Upload bài thi thử",
+		"empty": {
+			"title": "Chưa có bài thi nào",
+			"body": "Upload bài đầu tiên để bắt đầu phân tích và tạo flashcard.",
+			"cta": "Upload bài đầu tiên"
+		},
+		"card": {
+			"reading": "Reading",
+			"writing": "Writing",
+			"statusPending": "Chưa phân tích",
+			"statusAnalyzed": "Đã phân tích",
+			"sourcePhoto": "Ảnh",
+			"sourcePdf": "PDF"
+		},
+		"upload": {
+			"pageTitle": "Upload bài thi thử",
+			"pageSubhead": "Chọn loại bài và tải ảnh hoặc PDF lên. Tối đa 10 MB.",
+			"testTypeLabel": "Loại bài",
+			"testType": {
+				"reading": "Reading",
+				"writing": "Writing"
+			},
+			"fileLabel": "File",
+			"filePickerCta": "Chọn ảnh hoặc PDF từ thiết bị",
+			"removeFile": "Xóa",
+			"fileHint": "Định dạng hỗ trợ: JPG, PNG, HEIC, PDF. Tối đa 10 MB.",
+			"submit": "Tải lên",
+			"submitBusy": "Đang tải lên…",
+			"errors": {
+				"tooLarge": "File quá lớn. Tối đa 10 MB.",
+				"unsupported": "Định dạng không hỗ trợ. Dùng JPG, PNG, HEIC hoặc PDF.",
+				"generic": "Lỗi tải lên, vui lòng thử lại."
+			},
+			"back": "Quay lại danh sách"
+		},
+		"detail": {
+			"backToList": "Quay lại danh sách",
+			"placeholder": "Phân tích sẽ sẵn sàng trong vài phút.",
+			"uploadedLabel": "Đã tải lên"
+		}
 	}
 }

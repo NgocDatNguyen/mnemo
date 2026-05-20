@@ -410,7 +410,7 @@ mnemo/
 │   │   ├── dashboard/
 │   │   ├── decks/
 │   │   ├── review/
-│   │   ├── mock-test/
+│   │   ├── mock-tests/
 │   │   ├── cohorts/
 │   │   └── settings/
 │   ├── api/
@@ -621,6 +621,7 @@ Before opening beta signups to first 100 users:
 
 ## Decisions log (most recent first)
 
+- **2026-05-20**: Phase 2 Session 6 — mock test upload + R2 storage shipped. Pre-signed URL pattern (browser→R2 direct, bypasses Vercel 4.5MB body limit). Two-step server actions (getUploadUrl + recordUpload). Defense in depth: objectKey must live under users/{userId}/ namespace. HEIC accepted but not converted (defer to Gemini Vision in Session 7). Route name: /mock-tests (plural, REST convention). PostHog mock_test_uploaded event via posthog-node (server-side capture). R2 CORS configured for localhost:3000 + production URL.
 - **2026-05-20**: Phase 1 live on Vercel at https://mnemo-drab.vercel.app (project `prj_myzhIIe9e2EB1GZXv1wndUVY40tp` under `team_LvLaYNMc6ZkniwC8B6oCbHGY`). Function region `sin1` to minimize latency to Neon Singapore. GitHub `NgocDatNguyen/mnemo` auto-connected — pushes to `main` trigger production deploys, PRs get preview deploys. Env vars (12 + BETTER_AUTH_URL on prod-only) set via Vercel REST API (CLI `vercel env add` has a regression on Preview target when `--yes` is used non-interactively). Custom domain on `mnemo.app` deferred until DNS purchase. Resend still in dev mode (sender locked to signup email).
 - **2026-05-20**: Sentry + PostHog wiring landed in same Vercel deploy session. Packages were installed in Session 1 scaffold but never integrated until now. Added: `instrumentation.ts` (server+edge), `instrumentation-client.ts` (browser), `app/global-error.tsx`, `app/providers.tsx` with PostHogProvider, `app/posthog-pageview.tsx` for app-router pageview tracking, `withSentryConfig` in `next.config.ts`. Source map upload verified via temp `/api/test-sentry` (issue MNEMO-WEB-1, resolved). PostHog pageview verified via Playwright headless visit. `NEXT_PUBLIC_SENTRY_DSN` added (= public `SENTRY_DSN`). Known deprecation warnings: `@sentry/nextjs` `disableLogger` and `automaticVercelMonitors` should move under `webpack.*` keys — non-blocking, future cleanup. Next.js 16 deprecation: rename `middleware.ts` → `proxy.ts` — non-blocking, future cleanup.
 - **2026-05-20**: Landing page locked (sections: hero with WONK italic on "nhớ trọn đời", 3-column methodology with Lucide icons, 3-paragraph why-works, pricing callout, CTA, footer). Anti-gamification positioning explicit. Anki bridge wording clarified as "free forever even after Mnemo paid tier" to avoid contradicting pricing callout. No live beta counter in MVP. No OG image yet (Phase 2 design task). i18n files populated for vi + en but no UI switcher.

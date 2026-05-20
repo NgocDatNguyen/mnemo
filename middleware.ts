@@ -21,7 +21,7 @@ import { NextResponse } from "next/server";
  */
 
 const APP_PREFIX = "/dashboard"; // (app) group lives at /dashboard, /decks, etc.
-const APP_ROUTES = ["/dashboard", "/decks", "/review", "/mock-test", "/cohorts", "/settings"];
+const APP_ROUTES = ["/dashboard", "/decks", "/review", "/mock-tests", "/cohorts", "/settings"];
 const AUTH_ROUTES = ["/login", "/verify", "/error"];
 
 export async function middleware(request: NextRequest) {
