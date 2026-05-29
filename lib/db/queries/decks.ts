@@ -3,7 +3,8 @@ import type { BatchItem } from "drizzle-orm/batch";
 import { uuidv7 } from "uuidv7";
 import { db } from "@/lib/db/client";
 import type { Card, Deck } from "@/lib/db/schema";
-import { cards, decks, mockTests } from "@/lib/db/schema";
+import { cards, decks, mockTests, reviews } from "@/lib/db/schema";
+import { emptyReviewState } from "@/lib/fsrs";
 
 /**
  * Centralized deck/card write layer.
@@ -43,17 +44,22 @@ export type CreateDeckWithCardsInput = {
 	/** Update mockTests.generatedDeckId to point at this deck. Default true. Set false
 	 * when the caller already set the backlink (e.g. an atomic claim before generation). */
 	backlinkMockTest?: boolean;
+	/** When set, seed a `reviews` row (FSRS state=new) for this user per card, in the
+	 * same batch — so the due queue is non-empty as soon as the deck exists. */
+	seedReviewsForUserId?: string;
 	cards: CardInput[];
 };
 
 /**
  * Atomically create a deck and its cards, with `cardCount` set to the card count and
  * (when `sourceMockTestId` is given and `backlinkMockTest !== false`) the mock test
- * back-linked to this deck. Returns the deck id. One `db.batch` — partial failure rolls back.
+ * back-linked to this deck. Optionally seeds FSRS review rows. Returns the deck id.
+ * One `db.batch` — partial failure rolls back.
  */
 export async function createDeckWithCards(input: CreateDeckWithCardsInput): Promise<string> {
 	const deckId = input.deckId ?? uuidv7();
-	const cardRows = input.cards.map((c) => ({ ...c, deckId }));
+	// Pre-mint card ids so we can seed reviews referencing them in the same batch.
+	const cardRows = input.cards.map((c) => ({ ...c, id: uuidv7(), deckId }));
 
 	const statements: BatchItem<"pg">[] = [
 		db.insert(decks).values({
@@ -71,6 +77,17 @@ export async function createDeckWithCards(input: CreateDeckWithCardsInput): Prom
 
 	if (cardRows.length > 0) {
 		statements.push(db.insert(cards).values(cardRows));
+
+		if (input.seedReviewsForUserId) {
+			const userId = input.seedReviewsForUserId;
+			const now = new Date();
+			const reviewRows = cardRows.map((c) => ({
+				userId,
+				cardId: c.id,
+				...emptyReviewState(now),
+			}));
+			statements.push(db.insert(reviews).values(reviewRows));
+		}
 	}
 
 	if (input.sourceMockTestId && input.backlinkMockTest !== false) {

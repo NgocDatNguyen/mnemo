@@ -133,6 +133,7 @@ export async function generateCards(testId: string): Promise<GenerateCardsResult
 			source: "mock_test",
 			sourceMockTestId: test.id,
 			backlinkMockTest: false, // claim already set generatedDeckId
+			seedReviewsForUserId: userId, // seed FSRS state so cards are immediately reviewable
 			cards: cards.map((c) => ({
 				type: c.type,
 				front: c.front,
