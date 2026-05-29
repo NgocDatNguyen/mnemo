@@ -193,7 +193,13 @@
 						"language_mismatch": "Non-English content"
 					}
 				},
-				"createCardsCta": "Create flashcards from this analysis (coming soon)"
+				"createCardsCta": "Create flashcards from this analysis (coming soon)",
+				"cardGen": {
+					"cta": "Create flashcards from this analysis",
+					"generating": "Generating flashcards…",
+					"viewDeck": "View deck",
+					"error": "Could not generate flashcards. Please try again."
+				}
 			}
 		}
 	}

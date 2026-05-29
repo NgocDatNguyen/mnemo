@@ -2,6 +2,7 @@ import type { MockTest } from "@/lib/db/schema/mock-tests";
 import type { MockTestQualityWarning, WeaknessCluster } from "@/lib/db/types";
 import { copy } from "@/lib/i18n/copy";
 import { cn } from "@/lib/utils";
+import { GenerateCardsButton } from "./generate-cards-button";
 
 const SEVERITY_STYLES: Record<WeaknessCluster["severity"], string> = {
 	minor: "bg-info-bg text-info",
@@ -120,13 +121,7 @@ export function WeaknessDisplay({ test }: { test: MockTest }) {
 				))}
 			</div>
 
-			<button
-				type="button"
-				disabled
-				className="mt-8 w-full rounded-md border border-dashed border-border-strong bg-bg-elevated px-4 py-3 text-sm text-text-muted disabled:cursor-not-allowed"
-			>
-				{t.createCardsCta}
-			</button>
+			<GenerateCardsButton testId={test.id} existingDeckId={test.generatedDeckId} />
 		</div>
 	);
 }

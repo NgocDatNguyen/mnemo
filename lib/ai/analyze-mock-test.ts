@@ -6,7 +6,7 @@ import { recordUsage } from "@/lib/db/queries/usage";
 import { mockTests } from "@/lib/db/schema";
 import type { MockTestQualityWarning } from "@/lib/db/types";
 import { getObjectBytes } from "@/lib/r2/download";
-import { calculateGeminiCostCents } from "./cost";
+import { costCentsForProvider } from "./cost";
 import { AI_PROVIDER_LABELS, models } from "./models";
 import { buildAnalysisUserPrompt, SYSTEM_PROMPT } from "./prompts/mock-test-analysis";
 import { AnalysisResultSchema } from "./schemas/weakness-clusters";
@@ -67,7 +67,7 @@ export async function analyzeMockTest(testId: string): Promise<void> {
 		);
 		const { object, usage } = value;
 
-		const costCents = calculateGeminiCostCents({
+		const costCents = costCentsForProvider(provider, {
 			inputTokens: usage.inputTokens ?? 0,
 			outputTokens: usage.outputTokens ?? 0,
 		});

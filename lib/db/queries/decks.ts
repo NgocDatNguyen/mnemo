@@ -30,6 +30,9 @@ export type CardInput = {
 };
 
 export type CreateDeckWithCardsInput = {
+	/** Pre-minted deck id. When omitted, one is generated. Pass this when the caller
+	 * has already claimed an idempotency slot referencing the deck id. */
+	deckId?: string;
 	ownerId: string;
 	title: string;
 	description?: string | null;
@@ -37,16 +40,19 @@ export type CreateDeckWithCardsInput = {
 	source: Deck["source"];
 	sourceMockTestId?: string | null;
 	cohortId?: string | null;
+	/** Update mockTests.generatedDeckId to point at this deck. Default true. Set false
+	 * when the caller already set the backlink (e.g. an atomic claim before generation). */
+	backlinkMockTest?: boolean;
 	cards: CardInput[];
 };
 
 /**
  * Atomically create a deck and its cards, with `cardCount` set to the card count and
- * (when `sourceMockTestId` is given) the mock test back-linked to this deck. Returns
- * the new deck id. The whole thing is one `db.batch` — partial failure rolls back.
+ * (when `sourceMockTestId` is given and `backlinkMockTest !== false`) the mock test
+ * back-linked to this deck. Returns the deck id. One `db.batch` — partial failure rolls back.
  */
 export async function createDeckWithCards(input: CreateDeckWithCardsInput): Promise<string> {
-	const deckId = uuidv7();
+	const deckId = input.deckId ?? uuidv7();
 	const cardRows = input.cards.map((c) => ({ ...c, deckId }));
 
 	const statements: BatchItem<"pg">[] = [
@@ -67,7 +73,7 @@ export async function createDeckWithCards(input: CreateDeckWithCardsInput): Prom
 		statements.push(db.insert(cards).values(cardRows));
 	}
 
-	if (input.sourceMockTestId) {
+	if (input.sourceMockTestId && input.backlinkMockTest !== false) {
 		statements.push(
 			db
 				.update(mockTests)

@@ -1,8 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { WeaknessDisplay } from "@/components/mock-tests/weakness-display";
 import type { MockTest } from "@/lib/db/schema/mock-tests";
 import type { MockTestQualityWarning, WeaknessCluster } from "@/lib/db/types";
+
+// GenerateCardsButton uses useRouter (app-router context not present in jsdom)
+// and imports a "use server" action — stub both so the display renders.
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
+vi.mock("@/app/(app)/mock-tests/[id]/generate-cards-action", () => ({
+	generateCards: vi.fn(),
+}));
 
 const grammarCluster: WeaknessCluster = {
 	type: "grammar",
@@ -112,9 +119,14 @@ describe("WeaknessDisplay", () => {
 		expect(screen.queryByText(/lưu ý về chất lượng/i)).not.toBeInTheDocument();
 	});
 
-	it("renders the disabled Session 8 CTA preview", () => {
+	it("renders the enabled generate-cards CTA when no deck exists yet", () => {
 		render(<WeaknessDisplay test={baseTest} />);
-		const cta = screen.getByRole("button", { name: /tạo flashcard.+sắp ra mắt/i });
-		expect(cta).toBeDisabled();
+		const cta = screen.getByRole("button", { name: /tạo flashcard từ phân tích này/i });
+		expect(cta).not.toBeDisabled();
+	});
+
+	it("shows a view-deck CTA when a deck was already generated", () => {
+		render(<WeaknessDisplay test={{ ...baseTest, generatedDeckId: "deck-123" }} />);
+		expect(screen.getByRole("button", { name: /xem bộ thẻ/i })).toBeInTheDocument();
 	});
 });
