@@ -158,12 +158,34 @@
 	},
 	"privacy": {
 		"title": "Chính sách bảo mật",
-		"body": "Chính sách bảo mật đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",
+		"intro": "Bản beta. Nội dung này sẽ được rà soát pháp lý trước khi Mnemo ra mắt chính thức.",
+		"paragraphs": [
+			"Mnemo lưu email, thông tin trình độ (band, mục tiêu, ngày thi) và nội dung học bạn tạo để vận hành dịch vụ.",
+			"Phân tích AI dùng Gemini của Google (gói miễn phí trong giai đoạn beta). Dữ liệu bạn tải lên — gồm ảnh bài thi thử — có thể được Google dùng để cải thiện mô hình AI của họ. Vì vậy, đừng tải lên thông tin nhạy cảm.",
+			"Ảnh bài thi thử gốc được lưu tạm trên Cloudflare R2 và tự động xóa sau 30 ngày. Flashcard và tiến trình ôn tập của bạn được giữ lại để phục vụ việc học.",
+			"Sau beta, Mnemo dự kiến chuyển sang gói AI riêng tư (dữ liệu không dùng để huấn luyện).",
+			"Bạn có thể yêu cầu xóa tài khoản và dữ liệu bất cứ lúc nào."
+		],
 		"backHome": "Quay về trang chủ"
 	},
 	"terms": {
 		"title": "Điều khoản sử dụng",
-		"body": "Điều khoản sử dụng đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",
+		"intro": "Bản beta. Nội dung này sẽ được rà soát pháp lý trước khi Mnemo ra mắt chính thức.",
+		"paragraphs": [
+			"Mnemo đang trong giai đoạn beta, miễn phí cho 100 người dùng đầu tiên. Dịch vụ được cung cấp \"nguyên trạng\", có thể thay đổi hoặc gián đoạn.",
+			"Người dùng beta sẽ được giữ giá ưu đãi vĩnh viễn (grandfather pricing) khi Mnemo ra mắt gói trả phí.",
+			"Tính năng Anki bridge (import/export .apkg) miễn phí vĩnh viễn, kể cả sau khi có gói trả phí.",
+			"Bạn chịu trách nhiệm về nội dung mình tải lên và không dùng Mnemo cho mục đích vi phạm pháp luật."
+		],
+		"backHome": "Quay về trang chủ"
+	},
+	"aboutBeta": {
+		"title": "Vì sao Mnemo đang ở beta",
+		"paragraphs": [
+			"Mnemo đang validate sản phẩm với 100 người dùng đầu tiên. Trong giai đoạn này, mọi tính năng đều miễn phí.",
+			"Đổi lại, chúng tôi cần feedback chân thật của bạn để hoàn thiện sản phẩm.",
+			"Người dùng beta sẽ được ưu đãi giá vĩnh viễn khi Mnemo ra mắt gói trả phí."
+		],
 		"backHome": "Quay về trang chủ"
 	},
 	"mockTests": {

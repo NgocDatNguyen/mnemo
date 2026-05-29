@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { copy } from "@/lib/i18n/copy";
 
-export const metadata: Metadata = { title: copy.privacy.title };
+export const metadata: Metadata = { title: copy.aboutBeta.title };
 
-export default function PrivacyPage() {
-	const t = copy.privacy;
+export default function AboutBetaPage() {
+	const t = copy.aboutBeta;
 	return (
 		<main className="mx-auto w-full max-w-2xl px-4 py-16">
 			<h1 className="font-display text-3xl font-medium text-text">{t.title}</h1>
-			<p className="mt-2 text-sm italic text-text-muted">{t.intro}</p>
 			<div className="mt-8 space-y-4 text-text-secondary leading-7">
 				{t.paragraphs.map((p) => (
 					<p key={p.slice(0, 32)}>{p}</p>

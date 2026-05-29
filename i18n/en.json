@@ -158,12 +158,34 @@
 	},
 	"privacy": {
 		"title": "Privacy policy",
-		"body": "Our privacy policy is being finalized. Full version will be published before Mnemo's official launch.",
+		"intro": "Beta draft. This will be reviewed by counsel before Mnemo's official launch.",
+		"paragraphs": [
+			"Mnemo stores your email, level info (band, target, exam date), and the study content you create to run the service.",
+			"AI analysis uses Google's Gemini (free tier during beta). Data you upload — including mock-test photos — may be used by Google to improve their AI models, so don't upload sensitive information.",
+			"Original mock-test photos are stored temporarily on Cloudflare R2 and auto-deleted after 30 days. Your flashcards and review progress are retained to support learning.",
+			"After beta, Mnemo plans to move to a private AI tier (data not used for training).",
+			"You can request deletion of your account and data at any time."
+		],
 		"backHome": "Back to home"
 	},
 	"terms": {
 		"title": "Terms of service",
-		"body": "Our terms of service are being finalized. Full version will be published before Mnemo's official launch.",
+		"intro": "Beta draft. This will be reviewed by counsel before Mnemo's official launch.",
+		"paragraphs": [
+			"Mnemo is in beta, free for the first 100 users. The service is provided \"as is\" and may change or be interrupted.",
+			"Beta users keep grandfather pricing for life when Mnemo launches paid tiers.",
+			"The Anki bridge (.apkg import/export) is free forever, even after paid tiers exist.",
+			"You are responsible for the content you upload and must not use Mnemo for unlawful purposes."
+		],
+		"backHome": "Back to home"
+	},
+	"aboutBeta": {
+		"title": "Why Mnemo is in beta",
+		"paragraphs": [
+			"Mnemo is validating the product with its first 100 users. Everything is free during this phase.",
+			"In return, we need your honest feedback to make the product better.",
+			"Beta users keep grandfather pricing for life when paid tiers launch."
+		],
 		"backHome": "Back to home"
 	},
 	"mockTests": {

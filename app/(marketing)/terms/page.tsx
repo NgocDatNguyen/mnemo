@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { copy } from "@/lib/i18n/copy";
 
-export const metadata: Metadata = {
-	title: copy.terms.title,
-};
+export const metadata: Metadata = { title: copy.terms.title };
 
 export default function TermsPage() {
+	const t = copy.terms;
 	return (
-		<main className="min-h-screen flex items-center justify-center bg-bg-subtle px-4 py-12">
-			<Card className="w-full max-w-md">
-				<CardHeader>
-					<CardTitle>{copy.terms.title}</CardTitle>
-					<CardDescription>{copy.terms.body}</CardDescription>
-				</CardHeader>
-				<CardContent>
-					<Link href="/" className="text-sm text-accent underline underline-offset-4">
-						{copy.terms.backHome}
-					</Link>
-				</CardContent>
-			</Card>
+		<main className="mx-auto w-full max-w-2xl px-4 py-16">
+			<h1 className="font-display text-3xl font-medium text-text">{t.title}</h1>
+			<p className="mt-2 text-sm italic text-text-muted">{t.intro}</p>
+			<div className="mt-8 space-y-4 text-text-secondary leading-7">
+				{t.paragraphs.map((p) => (
+					<p key={p.slice(0, 32)}>{p}</p>
+				))}
+			</div>
+			<Link
+				href="/"
+				className="mt-10 inline-block text-sm text-accent underline underline-offset-4"
+			>
+				{t.backHome}
+			</Link>
 		</main>
 	);
 }

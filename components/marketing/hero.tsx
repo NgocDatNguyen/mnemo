@@ -15,7 +15,7 @@ import { CtaButtons } from "./cta-buttons";
  * font-variation-settings strings with single quotes don't survive Tailwind's
  * arbitrary-value escaping cleanly.
  */
-export function Hero() {
+export function Hero({ betaFull = false }: { betaFull?: boolean }) {
 	return (
 		<section className="bg-bg px-4 pt-24 pb-20 sm:px-8 md:pt-32 md:pb-24">
 			<div className="mx-auto max-w-3xl">
@@ -38,7 +38,7 @@ export function Hero() {
 				</div>
 
 				<div className="mt-10">
-					<CtaButtons clarifier={copy.hero.ctaClarifier} />
+					<CtaButtons clarifier={copy.hero.ctaClarifier} betaFull={betaFull} />
 				</div>
 			</div>
 		</section>
