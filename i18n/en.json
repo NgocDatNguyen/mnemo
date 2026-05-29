@@ -116,6 +116,12 @@
 			"B": "Good",
 			"C": "Review",
 			"needs_work": "Needs work"
+		},
+		"scoring": {
+			"pending": "Some cards haven't been quality-scored yet.",
+			"cta": "Score cards",
+			"scoring": "Scoring…",
+			"error": "Scoring failed. Try again."
 		}
 	},
 	"privacy": {

@@ -2,8 +2,10 @@
 
 import { and, eq, isNull } from "drizzle-orm";
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { uuidv7 } from "uuidv7";
 import { generateCardsFromWeakness } from "@/lib/ai/card-generator";
+import { scoreDeck } from "@/lib/ai/quality/engine";
 import { CARD_COUNT_FLOOR } from "@/lib/ai/schemas/cards";
 import { trackServerEvent } from "@/lib/analytics/posthog-server";
 import { auth } from "@/lib/auth/server";
@@ -141,6 +143,16 @@ export async function generateCards(testId: string): Promise<GenerateCardsResult
 				context: c.context ?? null,
 				sourceReference: c.source_reference ?? null,
 			})),
+		});
+
+		// Quality scoring runs in the background after the response — cards land
+		// unscored and the badge fills in once scoring completes (best-effort).
+		after(async () => {
+			try {
+				await scoreDeck(deckId, { distinctId: userId });
+			} catch (err) {
+				console.error("[generateCards] background scoreDeck failed", err);
+			}
 		});
 
 		await recordUsage(userId, { cardsGenerated: cards.length, aiCostCents: costCents });

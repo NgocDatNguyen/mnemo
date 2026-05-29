@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { QualityBadge } from "@/components/decks/quality-badge";
+import { ScoreCardsButton } from "@/components/decks/score-cards-button";
 import { auth } from "@/lib/auth/server";
 import { getDeckWithCards } from "@/lib/db/queries";
 import { copy } from "@/lib/i18n/copy";
@@ -32,6 +33,8 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 					{deck.cardCount} {t.cardCountLabel} · {t.sourceLabels[deck.source]}
 				</p>
 			</header>
+
+			{cards.some((c) => c.qualityScore === null) && <ScoreCardsButton deckId={deck.id} />}
 
 			{cards.length === 0 ? (
 				<p className="text-text-secondary">{t.detail.emptyCards}</p>

@@ -116,6 +116,12 @@
 			"B": "Tốt",
 			"C": "Cần xem lại",
 			"needs_work": "Cần sửa"
+		},
+		"scoring": {
+			"pending": "Một số thẻ chưa được chấm điểm chất lượng.",
+			"cta": "Chấm điểm thẻ",
+			"scoring": "Đang chấm…",
+			"error": "Chấm điểm thất bại. Thử lại."
 		}
 	},
 	"privacy": {
