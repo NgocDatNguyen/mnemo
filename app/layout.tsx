@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { PostHogPageview } from "./posthog-pageview";
 import { Providers } from "./providers";
@@ -50,6 +50,11 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: SITE_URL,
 	},
+	appleWebApp: { capable: true, title: "Mnemo", statusBarStyle: "default" },
+};
+
+export const viewport: Viewport = {
+	themeColor: "#1A2547",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { copy } from "@/lib/i18n/copy";
 import { submitFeedback } from "./feedback-actions";
 
@@ -77,13 +78,7 @@ export function FeedbackButton() {
 								<option value="praise">{t.types.praise}</option>
 								<option value="complaint">{t.types.complaint}</option>
 							</select>
-							<textarea
-								name="message"
-								required
-								rows={4}
-								placeholder={t.placeholder}
-								className={selectCls}
-							/>
+							<Textarea name="message" required rows={4} placeholder={t.placeholder} />
 							{errored && <p className="text-sm text-error">{t.error}</p>}
 							<Button
 								type="submit"

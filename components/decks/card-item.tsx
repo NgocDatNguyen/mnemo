@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { editCard } from "@/app/(app)/decks/[id]/card-actions";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import type { Card } from "@/lib/db/schema";
 import { copy } from "@/lib/i18n/copy";
 import { QualityBadge } from "./quality-badge";
@@ -53,27 +54,24 @@ export function CardItem({ card }: { card: Card }) {
 						<option value="basic">basic</option>
 						<option value="cloze">cloze</option>
 					</select>
-					<textarea
+					<Textarea
 						name="front"
 						defaultValue={card.front}
 						required
 						rows={2}
-						className={fieldCls}
 						aria-label={t.detail.frontLabel}
 					/>
-					<textarea
+					<Textarea
 						name="back"
 						defaultValue={card.back}
 						required
 						rows={2}
-						className={fieldCls}
 						aria-label={t.detail.backLabel}
 					/>
-					<textarea
+					<Textarea
 						name="context"
 						defaultValue={card.context ?? ""}
 						rows={2}
-						className={fieldCls}
 						aria-label={t.detail.contextLabel}
 						placeholder={t.detail.contextLabel}
 					/>
