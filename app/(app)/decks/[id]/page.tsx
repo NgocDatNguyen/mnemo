@@ -22,9 +22,17 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 
 	return (
 		<main className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
-			<Link href="/decks" className="text-sm text-accent hover:underline">
-				{t.detail.backToList}
-			</Link>
+			<div className="flex items-center justify-between gap-3">
+				<Link href="/decks" className="text-sm text-accent hover:underline">
+					{t.detail.backToList}
+				</Link>
+				<a
+					href={`/api/decks/${deck.id}/export`}
+					className="text-sm text-text-secondary underline-offset-4 hover:underline"
+				>
+					{copy.anki.export}
+				</a>
+			</div>
 
 			<header className="mt-4 mb-8">
 				<h1 className="font-display text-2xl font-medium text-text">{deck.title}</h1>

@@ -91,6 +91,20 @@
 			"error": "Gửi thất bại. Thử lại."
 		}
 	},
+	"anki": {
+		"import": {
+			"title": "Nhập từ Anki",
+			"subhead": "Chọn file .apkg để nhập vào bộ thẻ mới. Hỗ trợ định dạng Anki cũ (không gồm media).",
+			"submit": "Nhập",
+			"importing": "Đang nhập…",
+			"error": "Nhập thất bại. Vui lòng thử lại.",
+			"errorUnsupported": "File .apkg dùng định dạng mới (anki21b). Hãy export từ Anki ở định dạng \"older Anki\".",
+			"errorEmpty": "Không tìm thấy thẻ hợp lệ trong file này.",
+			"errorTooLarge": "File quá lớn để nhập (tối đa 8 MB / 5000 thẻ)."
+		},
+		"export": "Xuất ra Anki (.apkg)",
+		"importCta": "Nhập từ Anki"
+	},
 	"onboarding": {
 		"title": "Vài thông tin để cá nhân hóa",
 		"subhead": "Mnemo dùng thông tin này để tạo flashcard đúng trình độ của bạn.",

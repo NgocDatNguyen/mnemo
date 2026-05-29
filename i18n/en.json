@@ -91,6 +91,20 @@
 			"error": "Failed to send. Try again."
 		}
 	},
+	"anki": {
+		"import": {
+			"title": "Import from Anki",
+			"subhead": "Pick a .apkg file to import into a new deck. Legacy Anki format supported (media excluded).",
+			"submit": "Import",
+			"importing": "Importing…",
+			"error": "Import failed. Please try again.",
+			"errorUnsupported": "This .apkg uses the modern format (anki21b). Export it from Anki as an \"older Anki\" package.",
+			"errorEmpty": "No valid cards found in this file.",
+			"errorTooLarge": "File too large to import (max 8 MB / 5000 cards)."
+		},
+		"export": "Export to Anki (.apkg)",
+		"importCta": "Import from Anki"
+	},
 	"onboarding": {
 		"title": "A few details to personalize",
 		"subhead": "Mnemo uses these to generate flashcards at your level.",

@@ -17,9 +17,17 @@ export default async function DecksPage() {
 
 	return (
 		<main className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
-			<header className="mb-8">
-				<h1 className="font-display text-2xl font-medium text-text">{t.pageTitle}</h1>
-				<p className="mt-2 text-text-secondary">{t.pageSubhead}</p>
+			<header className="mb-8 flex items-start justify-between gap-4">
+				<div>
+					<h1 className="font-display text-2xl font-medium text-text">{t.pageTitle}</h1>
+					<p className="mt-2 text-text-secondary">{t.pageSubhead}</p>
+				</div>
+				<Link
+					href="/decks/import"
+					className="shrink-0 rounded-md border border-border px-3 py-2 text-sm text-text-secondary hover:border-border-strong"
+				>
+					{copy.anki.importCta}
+				</Link>
 			</header>
 
 			{decks.length === 0 ? (
