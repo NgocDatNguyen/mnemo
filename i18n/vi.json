@@ -154,6 +154,14 @@
 			"cta": "Chấm điểm thẻ",
 			"scoring": "Đang chấm…",
 			"error": "Chấm điểm thất bại. Thử lại."
+		},
+		"editor": {
+			"edit": "Sửa",
+			"type": "Loại thẻ",
+			"save": "Lưu",
+			"saving": "Đang lưu…",
+			"cancel": "Hủy",
+			"error": "Lưu thất bại. Thử lại."
 		}
 	},
 	"privacy": {

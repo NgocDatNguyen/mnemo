@@ -154,6 +154,14 @@
 			"cta": "Score cards",
 			"scoring": "Scoring…",
 			"error": "Scoring failed. Try again."
+		},
+		"editor": {
+			"edit": "Edit",
+			"type": "Card type",
+			"save": "Save",
+			"saving": "Saving…",
+			"cancel": "Cancel",
+			"error": "Save failed. Try again."
 		}
 	},
 	"privacy": {

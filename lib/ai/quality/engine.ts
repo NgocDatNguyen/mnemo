@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 import type { BatchItem } from "drizzle-orm/batch";
 import { db } from "@/lib/db/client";
 import { recordUsage } from "@/lib/db/queries";
@@ -81,5 +81,59 @@ export async function scoreDeck(deckId: string, opts: { distinctId?: string } = 
 	// Track the Flash-Lite classification spend (best-effort, never throws).
 	if (opts.distinctId && costCents > 0) {
 		await recordUsage(opts.distinctId, { aiCostCents: costCents });
+	}
+}
+
+/**
+ * Re-score a single card after an edit. Cheaper than scoreDeck: interference is
+ * computed deterministically against deck siblings, and only the edited card is
+ * sent to Flash-Lite (one tiny classification call). Best-effort.
+ */
+export async function rescoreCard(
+	cardId: string,
+	opts: { distinctId?: string } = {},
+): Promise<void> {
+	const [card] = await db
+		.select({
+			id: cardsTable.id,
+			deckId: cardsTable.deckId,
+			type: cardsTable.type,
+			front: cardsTable.front,
+			back: cardsTable.back,
+		})
+		.from(cardsTable)
+		.where(eq(cardsTable.id, cardId))
+		.limit(1);
+	if (!card) return;
+
+	const siblings = await db
+		.select({ type: cardsTable.type, front: cardsTable.front, back: cardsTable.back })
+		.from(cardsTable)
+		.where(and(eq(cardsTable.deckId, card.deckId), ne(cardsTable.id, cardId)));
+
+	// Edited card at index 0 so we can read its interference result directly.
+	const interference = ruleInterference([card, ...siblings])[0] ?? [];
+
+	let classification: Awaited<ReturnType<typeof classifyCards>> | null = null;
+	try {
+		classification = await classifyCards([card], opts.distinctId);
+	} catch (err) {
+		console.error("[quality] single-card classification failed; deterministic only", err);
+	}
+
+	const warnings: QualityWarning[] = [
+		...ruleReadingLoad(card),
+		...ruleClozePlacement(card),
+		...interference,
+		...classificationWarnings(classification?.map.get(0)),
+	];
+
+	await db
+		.update(cardsTable)
+		.set({ qualityScore: rollupGrade(warnings), qualityWarnings: warnings })
+		.where(eq(cardsTable.id, cardId));
+
+	if (opts.distinctId && (classification?.costCents ?? 0) > 0) {
+		await recordUsage(opts.distinctId, { aiCostCents: classification?.costCents ?? 0 });
 	}
 }

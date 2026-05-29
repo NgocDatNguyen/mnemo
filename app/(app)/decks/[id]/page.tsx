@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { QualityBadge } from "@/components/decks/quality-badge";
+import { CardItem } from "@/components/decks/card-item";
 import { ScoreCardsButton } from "@/components/decks/score-cards-button";
 import { auth } from "@/lib/auth/server";
 import { getDeckWithCards } from "@/lib/db/queries";
@@ -41,16 +41,7 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 			) : (
 				<ul className="space-y-3">
 					{cards.map((card) => (
-						<li key={card.id} className="rounded-lg border border-border bg-bg-elevated p-4">
-							<div className="flex items-start justify-between gap-3">
-								<p className="font-medium text-text">{card.front}</p>
-								<QualityBadge score={card.qualityScore} />
-							</div>
-							<p className="mt-2 text-text-secondary">{card.back}</p>
-							{card.context && (
-								<p className="mt-2 text-sm italic text-text-muted">{card.context}</p>
-							)}
-						</li>
+						<CardItem key={card.id} card={card} />
 					))}
 				</ul>
 			)}
