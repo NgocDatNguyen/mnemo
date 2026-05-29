@@ -15,7 +15,8 @@ const NAV = [
 	{ href: "/review", key: "review" as const },
 ];
 
-export function AppHeader({ betaTester }: { betaTester: boolean }) {
+export function AppHeader({ betaTester, isTutor }: { betaTester: boolean; isTutor: boolean }) {
+	const nav = isTutor ? [...NAV, { href: "/cohorts", key: "cohorts" as const }] : NAV;
 	return (
 		<header className="border-b border-border bg-bg">
 			<div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-3">
@@ -27,7 +28,7 @@ export function AppHeader({ betaTester }: { betaTester: boolean }) {
 				</div>
 				<div className="flex items-center gap-4">
 					<nav className="flex items-center gap-4 overflow-x-auto text-sm">
-						{NAV.map((item) => (
+						{nav.map((item) => (
 							<Link
 								key={item.href}
 								href={item.href}

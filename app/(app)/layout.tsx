@@ -22,7 +22,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
 	if (!session) redirect("/login");
 
 	const [row] = await db
-		.select({ onboardingCompletedAt: users.onboardingCompletedAt })
+		.select({ onboardingCompletedAt: users.onboardingCompletedAt, role: users.role })
 		.from(users)
 		.where(eq(users.id, session.user.id))
 		.limit(1);
@@ -33,7 +33,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
 
 	return (
 		<div className="flex min-h-screen flex-col bg-bg">
-			<AppHeader betaTester={betaTester} />
+			<AppHeader betaTester={betaTester} isTutor={row.role === "tutor"} />
 			{children}
 		</div>
 	);

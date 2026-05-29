@@ -70,7 +70,34 @@
 		"dashboard": "Tổng quan",
 		"decks": "Bộ thẻ",
 		"mockTests": "Bài thi thử",
-		"review": "Ôn tập"
+		"review": "Ôn tập",
+		"cohorts": "Lớp học"
+	},
+	"cohorts": {
+		"pageTitle": "Lớp học của bạn",
+		"pageSubhead": "Tạo lớp, mời học viên qua link, theo dõi tỷ lệ nhớ của từng người.",
+		"empty": "Chưa có lớp nào. Tạo lớp đầu tiên ở trên.",
+		"backToList": "Quay lại danh sách lớp",
+		"inviteLabel": "Link mời học viên",
+		"membersLabel": "Học viên",
+		"noMembers": "Chưa có học viên nào tham gia.",
+		"reviewsLabel": "lượt ôn",
+		"create": {
+			"nameLabel": "Tên lớp",
+			"targetBand": "Band mục tiêu",
+			"examDate": "Ngày thi (không bắt buộc)",
+			"submit": "Tạo lớp",
+			"creating": "Đang tạo…",
+			"error": "Tạo lớp thất bại. Thử lại."
+		},
+		"join": {
+			"joinedTitle": "Tham gia thành công",
+			"errorTitle": "Không thể tham gia",
+			"success": "Bạn đã tham gia lớp \"{name}\".",
+			"errorNotFound": "Link mời không hợp lệ hoặc lớp đã đóng.",
+			"errorTutor": "Bạn là giáo viên của lớp này, không thể tự tham gia.",
+			"toDashboard": "Về trang tổng quan"
+		}
 	},
 	"beta": {
 		"badge": "Beta — Miễn phí",

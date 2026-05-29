@@ -1,5 +1,13 @@
 export { deleteCard, insertCard, updateCard } from "./cards";
 export {
+	type CohortMemberRow,
+	createCohort,
+	getCohortForTutor,
+	type JoinResult,
+	joinCohort,
+	listCohortsByTutor,
+} from "./cohorts";
+export {
 	type CardInput,
 	type CreateDeckWithCardsInput,
 	createDeckWithCards,

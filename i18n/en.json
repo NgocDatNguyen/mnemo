@@ -70,7 +70,34 @@
 		"dashboard": "Dashboard",
 		"decks": "Decks",
 		"mockTests": "Mock tests",
-		"review": "Review"
+		"review": "Review",
+		"cohorts": "Cohorts"
+	},
+	"cohorts": {
+		"pageTitle": "Your cohorts",
+		"pageSubhead": "Create a cohort, invite students by link, track each one's retention.",
+		"empty": "No cohorts yet. Create your first one above.",
+		"backToList": "Back to cohorts",
+		"inviteLabel": "Student invite link",
+		"membersLabel": "Students",
+		"noMembers": "No students have joined yet.",
+		"reviewsLabel": "reviews",
+		"create": {
+			"nameLabel": "Cohort name",
+			"targetBand": "Target band",
+			"examDate": "Exam date (optional)",
+			"submit": "Create cohort",
+			"creating": "Creating…",
+			"error": "Failed to create cohort. Try again."
+		},
+		"join": {
+			"joinedTitle": "Joined",
+			"errorTitle": "Can't join",
+			"success": "You've joined \"{name}\".",
+			"errorNotFound": "Invalid invite link or the cohort is closed.",
+			"errorTutor": "You're the tutor of this cohort — you can't join it.",
+			"toDashboard": "Back to dashboard"
+		}
 	},
 	"beta": {
 		"badge": "Beta — Free",
