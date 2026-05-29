@@ -26,8 +26,16 @@ export async function getBetaUserCount(): Promise<number> {
 
 export async function canAcceptNewUser(): Promise<boolean> {
 	if (!BETA_MODE) return true;
-	const existing = await getBetaUserCount();
-	return existing < BETA_USER_LIMIT;
+	try {
+		const existing = await getBetaUserCount();
+		return existing < BETA_USER_LIMIT;
+	} catch (err) {
+		// A DB blip must not 500 the public landing page (this only gates a CTA
+		// destination). Fail open: assume slots available; the server-side signup
+		// hook is the real cap enforcement anyway.
+		console.error("[canAcceptNewUser] count failed; assuming open", err);
+		return true;
+	}
 }
 
 export type FeatureKey = "mock_test" | "ai_generation" | "tutor_mode" | "anki_export";

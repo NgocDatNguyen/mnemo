@@ -5,39 +5,65 @@ on:
   push:
     branches: [main]
 
+# Placeholder env shared by build + e2e. Real secrets are never needed: the build
+# does not connect to a DB, and the e2e smoke specs are unauthenticated (no DB/AI).
+env:
+  DATABASE_URL: postgresql://user:pass@db.example.com/placeholder
+  BETTER_AUTH_SECRET: ci-placeholder-secret-not-real-0000000000000000
+  BETTER_AUTH_URL: http://localhost:3000
+  RESEND_API_KEY: re_ci_placeholder
+  GOOGLE_GENERATIVE_AI_API_KEY: ci-placeholder
+  R2_ACCOUNT_ID: ci
+  R2_ACCESS_KEY_ID: ci
+  R2_SECRET_ACCESS_KEY: ci
+  R2_BUCKET_NAME: ci-bucket
+  CRON_SECRET: ci-cron-secret
+  BETA_MODE: "true"
+  BETA_USER_LIMIT: "100"
+
 jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
         with:
           version: 11
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
       - name: Lint (Biome)
         run: pnpm lint
-
       - name: Typecheck
         run: pnpm typecheck
-
       - name: Unit tests (Vitest)
         run: pnpm test
-
       - name: Build (Next)
         run: pnpm build
-        env:
-          DATABASE_URL: postgres://placeholder
-          BETTER_AUTH_SECRET: ci-placeholder-secret
-          BETTER_AUTH_URL: http://localhost:3000
-          BETA_MODE: "true"
-          BETA_USER_LIMIT: "100"
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      # Smoke specs cover UNAUTHENTICATED flows only (landing, waitlist, privacy,
+      # protected-route redirect). Auth-gated + AI flows (magic-link sign-in,
+      # upload->analysis->cards, review, Anki round-trip in real Anki) need a session
+      # stub + seeded DB and are verified manually / on a deployed preview.
+      - name: E2E (Playwright, unauthenticated smoke)
+        run: pnpm test:e2e

@@ -8,6 +8,7 @@ import { trackServerEvent } from "@/lib/analytics/posthog-server";
 import { auth } from "@/lib/auth/server";
 import { db } from "@/lib/db/client";
 import { mockTests } from "@/lib/db/schema";
+import { headObject } from "@/lib/r2/objects";
 import { buildObjectKey, getSignedUploadUrl } from "@/lib/r2/upload";
 import {
 	type GetUploadUrlInput,
@@ -23,7 +24,7 @@ export type GetUploadUrlResult =
 
 export type RecordUploadResult =
 	| { ok: true; testId: string }
-	| { ok: false; error: "UNAUTHORIZED" | "INVALID_INPUT" | "INTERNAL" };
+	| { ok: false; error: "UNAUTHORIZED" | "INVALID_INPUT" | "UPLOAD_NOT_FOUND" | "INTERNAL" };
 
 export async function getUploadUrl(input: GetUploadUrlInput): Promise<GetUploadUrlResult> {
 	const session = await auth.api.getSession({ headers: await headers() });
@@ -59,12 +60,19 @@ export async function recordUpload(input: RecordUploadInput): Promise<RecordUplo
 		return { ok: false, error: "INVALID_INPUT" };
 	}
 
+	// Verify the browser→R2 direct upload actually landed before recording it —
+	// otherwise a tampered/abandoned upload would create a row pointing at nothing
+	// and the analyzer would fail fetching the object.
+	const head = await headObject(parsed.data.objectKey);
+	if (!head) return { ok: false, error: "UPLOAD_NOT_FOUND" };
+	const contentType = parsed.data.contentType; // validated to the allowed union upstream
+
 	try {
 		await db.insert(mockTests).values({
 			id: parsed.data.testId,
 			userId: session.user.id,
 			testType: parsed.data.testType,
-			inputSource: inputSourceFromContentType(parsed.data.contentType),
+			inputSource: inputSourceFromContentType(contentType),
 			rawInputUrl: parsed.data.objectKey,
 		});
 
@@ -73,8 +81,8 @@ export async function recordUpload(input: RecordUploadInput): Promise<RecordUplo
 			event: "mock_test_uploaded",
 			properties: {
 				test_type: parsed.data.testType,
-				input_source: inputSourceFromContentType(parsed.data.contentType),
-				content_type: parsed.data.contentType,
+				input_source: inputSourceFromContentType(contentType),
+				content_type: contentType,
 			},
 		});
 
