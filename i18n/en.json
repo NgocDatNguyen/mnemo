@@ -54,7 +54,17 @@
 	"dashboard": {
 		"greeting": "Hi",
 		"placeholder": "Mnemo is still being built. You'll get an email when it's ready.",
-		"signOut": "Sign out"
+		"signOut": "Sign out",
+		"dueToday": "Cards due today",
+		"reviewNow": "Review now",
+		"totalReviews": "Total reviews",
+		"overallRetention": "Retention",
+		"retentionTrend": "Weekly retention",
+		"empty": {
+			"title": "No review data yet",
+			"body": "Upload a mock test, generate flashcards, then start reviewing. Your retention stats will show here.",
+			"cta": "Upload a mock test"
+		}
 	},
 	"nav": {
 		"dashboard": "Dashboard",

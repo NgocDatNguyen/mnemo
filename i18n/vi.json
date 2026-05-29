@@ -54,7 +54,17 @@
 	"dashboard": {
 		"greeting": "Chào",
 		"placeholder": "Mnemo đang được hoàn thiện. Bạn sẽ nhận email khi sẵn sàng.",
-		"signOut": "Đăng xuất"
+		"signOut": "Đăng xuất",
+		"dueToday": "Thẻ đến hạn hôm nay",
+		"reviewNow": "Ôn ngay",
+		"totalReviews": "Tổng lượt ôn",
+		"overallRetention": "Tỷ lệ nhớ",
+		"retentionTrend": "Tỷ lệ nhớ theo tuần",
+		"empty": {
+			"title": "Chưa có dữ liệu ôn tập",
+			"body": "Tải bài thi thử, tạo flashcard, rồi bắt đầu ôn. Thống kê tỷ lệ nhớ sẽ hiện ở đây.",
+			"cta": "Tải bài thi thử"
+		}
 	},
 	"nav": {
 		"dashboard": "Tổng quan",
