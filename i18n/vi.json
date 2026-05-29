@@ -56,6 +56,41 @@
 		"placeholder": "Mnemo đang được hoàn thiện. Bạn sẽ nhận email khi sẵn sàng.",
 		"signOut": "Đăng xuất"
 	},
+	"nav": {
+		"dashboard": "Tổng quan",
+		"decks": "Bộ thẻ",
+		"mockTests": "Bài thi thử",
+		"review": "Ôn tập"
+	},
+	"decks": {
+		"pageTitle": "Bộ thẻ của bạn",
+		"pageSubhead": "Các bộ flashcard Mnemo tạo từ bài thi thử của bạn.",
+		"empty": {
+			"title": "Chưa có bộ thẻ nào",
+			"body": "Tải một bài thi thử lên, Mnemo sẽ phân tích và tạo flashcard cho bạn.",
+			"cta": "Tải bài thi thử"
+		},
+		"cardCountLabel": "thẻ",
+		"sourceLabels": {
+			"manual": "Tự tạo",
+			"mock_test": "Từ bài thi",
+			"pdf_upload": "Từ PDF",
+			"imported_apkg": "Nhập từ Anki"
+		},
+		"detail": {
+			"backToList": "Quay lại bộ thẻ",
+			"emptyCards": "Bộ thẻ này chưa có thẻ nào.",
+			"frontLabel": "Mặt trước",
+			"backLabel": "Mặt sau",
+			"contextLabel": "Ngữ cảnh"
+		},
+		"quality": {
+			"A": "Xuất sắc",
+			"B": "Tốt",
+			"C": "Cần xem lại",
+			"needs_work": "Cần sửa"
+		}
+	},
 	"privacy": {
 		"title": "Chính sách bảo mật",
 		"body": "Chính sách bảo mật đang được hoàn thiện. Sẽ có bản đầy đủ trước khi Mnemo ra mắt chính thức.",

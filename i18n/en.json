@@ -56,6 +56,41 @@
 		"placeholder": "Mnemo is still being built. You'll get an email when it's ready.",
 		"signOut": "Sign out"
 	},
+	"nav": {
+		"dashboard": "Dashboard",
+		"decks": "Decks",
+		"mockTests": "Mock tests",
+		"review": "Review"
+	},
+	"decks": {
+		"pageTitle": "Your decks",
+		"pageSubhead": "Flashcard decks Mnemo built from your mock tests.",
+		"empty": {
+			"title": "No decks yet",
+			"body": "Upload a mock test and Mnemo will analyze it and generate flashcards for you.",
+			"cta": "Upload a mock test"
+		},
+		"cardCountLabel": "cards",
+		"sourceLabels": {
+			"manual": "Manual",
+			"mock_test": "From test",
+			"pdf_upload": "From PDF",
+			"imported_apkg": "Anki import"
+		},
+		"detail": {
+			"backToList": "Back to decks",
+			"emptyCards": "This deck has no cards yet.",
+			"frontLabel": "Front",
+			"backLabel": "Back",
+			"contextLabel": "Context"
+		},
+		"quality": {
+			"A": "Excellent",
+			"B": "Good",
+			"C": "Review",
+			"needs_work": "Needs work"
+		}
+	},
 	"privacy": {
 		"title": "Privacy policy",
 		"body": "Our privacy policy is being finalized. Full version will be published before Mnemo's official launch.",
