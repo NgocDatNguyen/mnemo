@@ -72,6 +72,25 @@
 		"mockTests": "Mock tests",
 		"review": "Review"
 	},
+	"beta": {
+		"badge": "Beta — Free",
+		"feedback": {
+			"cta": "Feedback",
+			"typeLabel": "Feedback type",
+			"types": {
+				"general": "General",
+				"bug": "Bug",
+				"feature_request": "Feature request",
+				"praise": "Praise",
+				"complaint": "Complaint"
+			},
+			"placeholder": "What do you think of Mnemo?",
+			"submit": "Send",
+			"sending": "Sending…",
+			"thanks": "Thanks for the feedback.",
+			"error": "Failed to send. Try again."
+		}
+	},
 	"onboarding": {
 		"title": "A few details to personalize",
 		"subhead": "Mnemo uses these to generate flashcards at your level.",

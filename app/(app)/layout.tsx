@@ -29,9 +29,11 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
 
 	if (!row?.onboardingCompletedAt) redirect("/onboarding");
 
+	const betaTester = (session.user as { betaTester?: boolean }).betaTester ?? false;
+
 	return (
 		<div className="flex min-h-screen flex-col bg-bg">
-			<AppHeader />
+			<AppHeader betaTester={betaTester} />
 			{children}
 		</div>
 	);

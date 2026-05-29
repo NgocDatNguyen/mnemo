@@ -72,6 +72,25 @@
 		"mockTests": "Bài thi thử",
 		"review": "Ôn tập"
 	},
+	"beta": {
+		"badge": "Beta — Miễn phí",
+		"feedback": {
+			"cta": "Góp ý",
+			"typeLabel": "Loại góp ý",
+			"types": {
+				"general": "Chung",
+				"bug": "Lỗi",
+				"feature_request": "Đề xuất tính năng",
+				"praise": "Khen",
+				"complaint": "Phàn nàn"
+			},
+			"placeholder": "Bạn nghĩ sao về Mnemo?",
+			"submit": "Gửi",
+			"sending": "Đang gửi…",
+			"thanks": "Cảm ơn góp ý của bạn.",
+			"error": "Gửi thất bại. Thử lại."
+		}
+	},
 	"onboarding": {
 		"title": "Vài thông tin để cá nhân hóa",
 		"subhead": "Mnemo dùng thông tin này để tạo flashcard đúng trình độ của bạn.",
