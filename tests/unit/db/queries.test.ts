@@ -170,20 +170,20 @@ describe("insertCard / deleteCard cardCount sync", () => {
 		expect(captured.batches[0]).toHaveLength(2); // insert + cardCount update
 	});
 
-	it("deleteCard returns false when the card does not exist", async () => {
-		const { db } = makeDbMock({ selectRows: [[]] }); // existence lookup empty
+	it("deleteCard returns false when the card does not exist or is not owned", async () => {
+		const { db } = makeDbMock({ selectRows: [[]] }); // owner-scoped lookup empty
 		vi.doMock("@/lib/db/client", () => ({ db }));
 		const { deleteCard } = await import("@/lib/db/queries/cards");
 
-		expect(await deleteCard("missing")).toBe(false);
+		expect(await deleteCard("missing", "user-1")).toBe(false);
 	});
 
-	it("deleteCard batches delete + decrement when the card exists", async () => {
+	it("deleteCard batches delete + decrement when the user owns the card", async () => {
 		const { db, captured } = makeDbMock({ selectRows: [[{ deckId: "deck-1" }]] });
 		vi.doMock("@/lib/db/client", () => ({ db }));
 		const { deleteCard } = await import("@/lib/db/queries/cards");
 
-		expect(await deleteCard("card-1")).toBe(true);
+		expect(await deleteCard("card-1", "user-1")).toBe(true);
 		expect(captured.batches[0]).toHaveLength(2); // delete + cardCount decrement
 	});
 });

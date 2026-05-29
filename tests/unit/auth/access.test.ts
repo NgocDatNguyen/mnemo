@@ -21,10 +21,13 @@ afterEach(() => {
 });
 
 function mockUserCount(count: number) {
+	// getBetaUserCount now filters beta_tester: select().from().where() → rows.
 	vi.doMock("@/lib/db/client", () => ({
 		db: {
 			select: () => ({
-				from: async () => [{ value: count }],
+				from: () => ({
+					where: async () => [{ value: count }],
+				}),
 			}),
 		},
 	}));

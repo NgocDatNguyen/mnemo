@@ -288,7 +288,6 @@
 						"language_mismatch": "Non-English content"
 					}
 				},
-				"createCardsCta": "Create flashcards from this analysis (coming soon)",
 				"cardGen": {
 					"cta": "Create flashcards from this analysis",
 					"generating": "Generating flashcards…",

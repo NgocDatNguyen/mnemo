@@ -13,7 +13,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { APIError } from "better-auth/api";
 import { magicLink } from "better-auth/plugins";
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import { db } from "@/lib/db/client";
 import { accounts, sessions, users, verifications } from "@/lib/db/schema";
@@ -77,7 +77,10 @@ export const auth = betterAuth({
 					// hit this hook (Better Auth only calls `create.before` on new
 					// user creation, not on session creation for existing users).
 					if (BETA_MODE) {
-						const result = await db.select({ value: count() }).from(users);
+						const result = await db
+							.select({ value: count() })
+							.from(users)
+							.where(eq(users.betaTester, true));
 						const existing = result[0]?.value ?? 0;
 
 						if (existing >= BETA_USER_LIMIT) {

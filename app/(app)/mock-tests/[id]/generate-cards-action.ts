@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { after } from "next/server";
 import { uuidv7 } from "uuidv7";
 import { generateCardsFromWeakness } from "@/lib/ai/card-generator";
+import { AI_PROVIDER_LABELS } from "@/lib/ai/models";
 import { scoreDeck } from "@/lib/ai/quality/engine";
 import { CARD_COUNT_FLOOR } from "@/lib/ai/schemas/cards";
 import { trackServerEvent } from "@/lib/analytics/posthog-server";
@@ -111,7 +112,8 @@ export async function generateCards(testId: string): Promise<GenerateCardsResult
 		const { cards, costCents, provider } = await generateCardsFromWeakness(clusters, level, {
 			distinctId: userId,
 		});
-		const providerLabel = provider === "fallback" ? "claude-haiku-4-5" : "gemini-2.5-flash";
+		const providerLabel =
+			provider === "fallback" ? AI_PROVIDER_LABELS.premium : AI_PROVIDER_LABELS.generation;
 
 		if (cards.length < CARD_COUNT_FLOOR) {
 			// Cost was still incurred — keep telemetry complete — then free the slot.

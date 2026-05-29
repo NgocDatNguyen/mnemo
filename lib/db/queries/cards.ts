@@ -30,13 +30,17 @@ export async function insertCard(deckId: string, input: CardInput): Promise<stri
 
 /**
  * Delete a card and decrement `decks.cardCount` atomically. No-op (returns false) if
- * the card does not exist. cardCount is floored at 0 to guard against drift.
+ * the card does not exist OR is not owned by the user. cardCount is floored at 0
+ * to guard against drift. Owner-scoped via the deck join (same contract as
+ * updateCard) so the userId param is mandatory — a future delete UI can't ship a
+ * cross-user delete by mistake.
  */
-export async function deleteCard(cardId: string): Promise<boolean> {
+export async function deleteCard(cardId: string, userId: string): Promise<boolean> {
 	const existing = await db
 		.select({ deckId: cards.deckId })
 		.from(cards)
-		.where(eq(cards.id, cardId))
+		.innerJoin(decks, eq(cards.deckId, decks.id))
+		.where(and(eq(cards.id, cardId), eq(decks.ownerId, userId)))
 		.limit(1);
 
 	const deckId = existing[0]?.deckId;

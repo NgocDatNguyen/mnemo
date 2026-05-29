@@ -1,4 +1,4 @@
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { users } from "@/lib/db/schema";
 
@@ -18,7 +18,9 @@ export const BETA_MODE = process.env.BETA_MODE === "true";
 export const BETA_USER_LIMIT = Number.parseInt(process.env.BETA_USER_LIMIT || "100", 10);
 
 export async function getBetaUserCount(): Promise<number> {
-	const result = await db.select({ value: count() }).from(users);
+	// Count the beta cohort specifically, not every row (admins / post-beta signups
+	// with beta_tester=false must not consume beta slots). Uses idx_users_beta_tester.
+	const result = await db.select({ value: count() }).from(users).where(eq(users.betaTester, true));
 	return result[0]?.value ?? 0;
 }
 
