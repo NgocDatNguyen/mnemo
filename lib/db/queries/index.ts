@@ -6,3 +6,4 @@ export {
 	getDeckWithCards,
 	listDecksByOwner,
 } from "./decks";
+export { recordUsage } from "./usage";
