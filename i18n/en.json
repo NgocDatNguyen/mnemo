@@ -72,6 +72,19 @@
 		"mockTests": "Mock tests",
 		"review": "Review"
 	},
+	"onboarding": {
+		"title": "A few details to personalize",
+		"subhead": "Mnemo uses these to generate flashcards at your level.",
+		"roleLabel": "You are",
+		"roleStudent": "Student",
+		"roleTutor": "Tutor",
+		"currentBand": "Current band",
+		"targetBand": "Target band",
+		"examDate": "Exam date (optional)",
+		"submit": "Get started",
+		"saving": "Saving…",
+		"error": "Save failed. Please try again."
+	},
 	"review": {
 		"pageTitle": "Review",
 		"showAnswer": "Show answer",

@@ -72,6 +72,19 @@
 		"mockTests": "Bài thi thử",
 		"review": "Ôn tập"
 	},
+	"onboarding": {
+		"title": "Vài thông tin để cá nhân hóa",
+		"subhead": "Mnemo dùng thông tin này để tạo flashcard đúng trình độ của bạn.",
+		"roleLabel": "Bạn là",
+		"roleStudent": "Học viên",
+		"roleTutor": "Giáo viên",
+		"currentBand": "Band hiện tại",
+		"targetBand": "Band mục tiêu",
+		"examDate": "Ngày thi (không bắt buộc)",
+		"submit": "Bắt đầu",
+		"saving": "Đang lưu…",
+		"error": "Lưu thất bại. Vui lòng thử lại."
+	},
 	"review": {
 		"pageTitle": "Ôn tập",
 		"showAnswer": "Hiện đáp án",
