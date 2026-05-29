@@ -62,6 +62,23 @@
 		"mockTests": "Bài thi thử",
 		"review": "Ôn tập"
 	},
+	"review": {
+		"pageTitle": "Ôn tập",
+		"showAnswer": "Hiện đáp án",
+		"rateError": "Lưu kết quả thất bại. Thử lại.",
+		"clozeBlank": "[ … ]",
+		"ratings": {
+			"again": "Lại",
+			"hard": "Khó",
+			"good": "Tốt",
+			"easy": "Dễ"
+		},
+		"empty": {
+			"title": "Không có thẻ nào đến hạn",
+			"body": "Bạn đã ôn hết các thẻ đến hạn hôm nay. Quay lại sau nhé.",
+			"toDecks": "Xem bộ thẻ"
+		}
+	},
 	"decks": {
 		"pageTitle": "Bộ thẻ của bạn",
 		"pageSubhead": "Các bộ flashcard Mnemo tạo từ bài thi thử của bạn.",

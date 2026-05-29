@@ -62,6 +62,23 @@
 		"mockTests": "Mock tests",
 		"review": "Review"
 	},
+	"review": {
+		"pageTitle": "Review",
+		"showAnswer": "Show answer",
+		"rateError": "Failed to save. Try again.",
+		"clozeBlank": "[ … ]",
+		"ratings": {
+			"again": "Again",
+			"hard": "Hard",
+			"good": "Good",
+			"easy": "Easy"
+		},
+		"empty": {
+			"title": "Nothing due",
+			"body": "You've reviewed all the cards due today. Check back later.",
+			"toDecks": "View decks"
+		}
+	},
 	"decks": {
 		"pageTitle": "Your decks",
 		"pageSubhead": "Flashcard decks Mnemo built from your mock tests.",

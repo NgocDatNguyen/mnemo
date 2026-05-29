@@ -6,13 +6,12 @@ import { copy } from "@/lib/i18n/copy";
  * each page's own <main>. Mobile-first: wordmark + horizontal nav that scrolls
  * on narrow screens. No gamification chrome.
  *
- * The Review link is intentionally omitted until the /review route exists
- * (roadmap step 7) to avoid a dead nav link.
  */
 const NAV = [
 	{ href: "/dashboard", key: "dashboard" as const },
 	{ href: "/decks", key: "decks" as const },
 	{ href: "/mock-tests", key: "mockTests" as const },
+	{ href: "/review", key: "review" as const },
 ];
 
 export function AppHeader() {
